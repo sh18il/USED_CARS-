@@ -5,6 +5,24 @@ class Setings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text('SETTINGS')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              child: Column(
+                children: [
+                  Text('about'),
+                  Text('privacy and security'),
+                  Text('reset')
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

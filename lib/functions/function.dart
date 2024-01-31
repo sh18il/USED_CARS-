@@ -4,7 +4,7 @@ import 'package:used_caer/model/cars_model.dart';
 
 
 ValueNotifier<List<CarsModel>> carsListNotifier = ValueNotifier([]);
-// ValueNotifier<List<MediumCarModel>> carsMediumListNotifier = ValueNotifier([]);
+
 
 Future<void> addcarsl(CarsModel value) async {
   final carslDB = await Hive.openBox<CarsModel>('carsl_db');

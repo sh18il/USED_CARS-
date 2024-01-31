@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:used_caer/screens/low_cars.dart';
+import 'package:used_caer/screens/low_cars_pages/low_cars.dart';
 import 'package:used_caer/screens/luxury_cars_pages.dart';
 import 'package:used_caer/screens/medium_budjet_screen/medium_pages.dart';
 // import 'package:used_caer/widgets/bottom_app_bar.dart';
@@ -58,8 +58,8 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(builder: (context) => Midium_cars()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Midium_cars()));
                 },
                 child: Container(
                   height: 220,

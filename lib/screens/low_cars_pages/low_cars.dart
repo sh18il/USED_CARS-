@@ -1,58 +1,58 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/screens/low_cars_pages/add_low_screen.dart';
+import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
+import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
-import 'package:used_caer/functions/medium_functions.dart';
-import 'package:used_caer/model/medium_cars_model.dart';
-import 'package:used_caer/screens/medium_budjet_screen/medium_add_screen.dart';
-import 'package:used_caer/screens/medium_budjet_screen/medium_edit.dart';
-import 'package:used_caer/screens/medium_budjet_screen/view_medium_screen.dart';
+import '../../functions/lowcars_functions.dart';
 
-class Midium_cars extends StatelessWidget {
-  const Midium_cars({super.key});
+class Low_cars extends StatelessWidget {
+  const Low_cars({super.key});
 
   @override
   Widget build(BuildContext context) {
-    getAllCarsm();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(child: Text('MEDIUM CARS')),
+        title: Center(child: Text('LUXURY CARS')),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black87,
         child: Icon(Icons.add_to_photos_outlined),
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => MediumAddScreen()));
+              .push(MaterialPageRoute(builder: (context) => AddLowCars()));
         },
       ),
       body: Column(
         children: [
           Expanded(
             child: ValueListenableBuilder(
-              valueListenable: carsMediumListNotifier,
+              valueListenable: carsLowListNotifier,
               builder: (context, value, child) {
-                List<MediumCarsModel> carsList = value;
+                List<LowCarsModel> carsList = value;
 
                 return ListView.separated(
                   itemBuilder: (context, index) {
-                    MediumCarsModel carm = carsList[index];
+                    LowCarsModel carlo = carsList[index];
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => MediumViewScreen(
-                                  name: carm.name,
-                                  model: carm.model,
-                                  km: carm.km,
-                                  index: index,
-                                  dlnbr: carm.dlnumber,
-                                  owner: carm.owner,
-                                  price: carm.price,
-                                  future: carm.future,
-                                  imagepath: carm.image)));
+                              builder: (context) => ViewLowCars(
+                                    name: carlo.name,
+                                    model: carlo.model,
+                                    km: carlo.km,
+                                    index: index,
+                                    dlnbr: carlo.dlnumber,
+                                    owner: carlo.owner,
+                                    price: carlo.price,
+                                    future: carlo.future,
+                                    imagepath: carlo.image,
+                                  )));
                         },
                         child: Card(
                           child: Column(
@@ -61,8 +61,8 @@ class Midium_cars extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(carm.name),
-                                  Text(carm.dlnumber),
+                                  Text(carlo.name),
+                                  Text(carlo.dlnumber),
                                   Container(
                                     width: 150,
                                     height: 130,
@@ -70,8 +70,8 @@ class Midium_cars extends StatelessWidget {
                                       color: Color.fromARGB(255, 255, 255, 255),
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image: carm.image != null
-                                            ? FileImage(File(carm.image!))
+                                        image: carlo.image != null
+                                            ? FileImage(File(carlo.image!))
                                             : AssetImage("image/carr1.png")
                                                 as ImageProvider,
                                       ),
@@ -99,7 +99,7 @@ class Midium_cars extends StatelessWidget {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      deletCarsm(index);
+                                                      deletCarslow(index);
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
@@ -120,18 +120,18 @@ class Midium_cars extends StatelessWidget {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        MediumEditScreen(
-                                                            name: carm.name,
-                                                            model: carm.model,
-                                                            km: carm.km,
-                                                            index: index,
-                                                            dlnbr:
-                                                                carm.dlnumber,
-                                                            owner: carm.owner,
-                                                            price: carm.price,
-                                                            future: carm.future,
-                                                            imagepath:
-                                                                carm.image)));
+                                                        EditLowCarScreen(
+                                                          name: carlo.name,
+                                                          model: carlo.model,
+                                                          km: carlo.km,
+                                                          index: index,
+                                                          dlnbr: carlo.dlnumber,
+                                                          owner: carlo.owner,
+                                                          price: carlo.price,
+                                                          future: carlo.future,
+                                                          imagepath:
+                                                              carlo.image,
+                                                        )));
                                           },
                                           icon: Icon(Icons.edit_document)),
                                     ],
