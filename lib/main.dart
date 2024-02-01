@@ -3,8 +3,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
-import 'package:used_caer/screens/sign_in.dart';
-// import 'package:used_caer/widgets/bottom_app_bar.dart';
+
+
 import 'package:hive/hive.dart';
 import 'package:used_caer/screens/splash_screen.dart';
 
