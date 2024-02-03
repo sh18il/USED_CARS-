@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
 
+// ignore: must_be_immutable
 class EditLuxury_Screen extends StatefulWidget {
   String name;
   String model;
@@ -44,6 +45,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
 
   File? _selectImage;
 
+  @override
   void initState() {
     nameContrl = TextEditingController(text: widget.name);
     modelContrl = TextEditingController(text: widget.model);
@@ -61,7 +63,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(
+        title: const Center(
           child: Text("EDIT CARS",
               style: TextStyle(
                 fontSize: 32,
@@ -73,9 +75,9 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(20),
+              const Gap(20),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 200,
                   height: 200,
                   child: CircleAvatar(
@@ -86,14 +88,14 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                   ),
                 ),
               ),
-              Gap(20),
-              Text('EDIT CAR PHOTO'),
+              const Gap(20),
+              const Text('EDIT CAR PHOTO'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -101,7 +103,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -109,7 +111,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       label: const Text("CAMERA")),
                 ],
               ),
-              Gap(30),
+              const Gap(30),
               Column(
                 children: [
                   Row(
@@ -147,7 +149,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -183,7 +185,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -219,7 +221,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Container(
                     width: 223,
                     height: 68,
@@ -235,13 +237,13 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                     ),
                   ),
-                  Gap(30),
+                  const Gap(30),
                   ElevatedButton(
                       onPressed: () {
                         updateAll();
                         Navigator.pop(context);
                       },
-                      child: Text('SUBMIT'))
+                      child: const Text('SUBMIT'))
                 ],
               )
             ],

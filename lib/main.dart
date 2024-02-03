@@ -6,7 +6,7 @@ import 'package:used_caer/model/medium_cars_model.dart';
 
 
 import 'package:hive/hive.dart';
-import 'package:used_caer/screens/splash_screen.dart';
+import 'package:used_caer/screens/widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ void main() async {
     Hive.registerAdapter(LowCarsModelAdapter());
   }
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.fallback(),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

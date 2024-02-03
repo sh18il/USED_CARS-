@@ -5,6 +5,11 @@ import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
+import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/model/medium_cars_model.dart';
+
+import '../functions/lowcars_functions.dart';
+import '../functions/medium_functions.dart';
 
 class AddScrees extends StatefulWidget {
   const AddScrees({super.key});
@@ -13,7 +18,10 @@ class AddScrees extends StatefulWidget {
   State<AddScrees> createState() => _AddScreesState();
 }
 
+enum DataBases { LuxuryDb, MediumDb, LowDb }
+
 class _AddScreesState extends State<AddScrees> {
+  DataBases selectedDatabase = DataBases.LuxuryDb;
   final nameContrl = TextEditingController();
   final modelContrl = TextEditingController();
   final kmContrl = TextEditingController();
@@ -30,7 +38,7 @@ class _AddScreesState extends State<AddScrees> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(
+        title: const Center(
           child: Text("ADD CARS",
               style: TextStyle(
                 fontSize: 32,
@@ -42,26 +50,26 @@ class _AddScreesState extends State<AddScrees> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(40),
+              const Gap(40),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 200,
                   height: 200,
                   child: CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     backgroundImage: _selectImage != null
                         ? FileImage(_selectImage!)
                         : const AssetImage("image/carr1.png") as ImageProvider,
                   ),
                 ),
               ),
-              Text('ADD CAR PHOTO'),
+              const Text('ADD CAR PHOTO'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -69,7 +77,7 @@ class _AddScreesState extends State<AddScrees> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -77,7 +85,7 @@ class _AddScreesState extends State<AddScrees> {
                       label: const Text("CAMERA")),
                 ],
               ),
-              Gap(30),
+              const Gap(30),
               Form(
                 key: _formKey,
                 child: Column(
@@ -131,7 +139,7 @@ class _AddScreesState extends State<AddScrees> {
                         ),
                       ],
                     ),
-                    Gap(30),
+                    const Gap(30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -181,7 +189,7 @@ class _AddScreesState extends State<AddScrees> {
                         ),
                       ],
                     ),
-                    Gap(30),
+                    const Gap(30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -231,7 +239,29 @@ class _AddScreesState extends State<AddScrees> {
                         ),
                       ],
                     ),
-                    Gap(30),
+                    Column(
+                      children: [
+                        DropdownButton<DataBases>(
+                          value: selectedDatabase,
+                          items: const [
+                            DropdownMenuItem(
+                                value: DataBases.LuxuryDb,
+                                child: Text('Luxury')),
+                            DropdownMenuItem(
+                                value: DataBases.MediumDb,
+                                child: Text('MEDIUM')),
+                            DropdownMenuItem(
+                                value: DataBases.LowDb, child: Text('LOW')),
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              selectedDatabase = value!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    const Gap(30),
                     Container(
                       width: 223,
                       height: 68,
@@ -254,7 +284,7 @@ class _AddScreesState extends State<AddScrees> {
                         ),
                       ),
                     ),
-                    Gap(30),
+                    const Gap(30),
                     ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -262,7 +292,7 @@ class _AddScreesState extends State<AddScrees> {
                             Navigator.pop(context);
                           }
                         },
-                        child: Text('SUBMIT'))
+                        child: const Text('SUBMIT'))
                   ],
                 ),
               )
@@ -274,34 +304,95 @@ class _AddScreesState extends State<AddScrees> {
   }
 
   Future<void> onAddCarsButn() async {
-    final _name = nameContrl.text;
-    final _model = modelContrl.text;
-    final _km = kmContrl.text;
-    final _dlnbr = dlNumberContrl.text;
-    final _owner = ownerContrl.text;
-    final _price = priceContrl.text;
-    final _future = priceContrl.text;
+    if (selectedDatabase == DataBases.LuxuryDb) {
+      final name = nameContrl.text;
+      final model = modelContrl.text;
+      final km = kmContrl.text;
+      final dlnbr = dlNumberContrl.text;
+      final owner = ownerContrl.text;
+      final price = priceContrl.text;
+      final future = priceContrl.text;
 
-    if (_name.isEmpty ||
-        _model.isEmpty ||
-        _km.isEmpty ||
-        _dlnbr.isEmpty ||
-        _owner.isEmpty ||
-        _price.isEmpty ||
-        _future.isEmpty) {
-      return;
+      if (name.isEmpty ||
+          model.isEmpty ||
+          km.isEmpty ||
+          dlnbr.isEmpty ||
+          owner.isEmpty ||
+          price.isEmpty ||
+          future.isEmpty) {
+        return;
+      }
+
+      final cars = CarsModel(
+          name: name,
+          model: model,
+          km: km,
+          dlnumber: dlnbr,
+          owner: owner,
+          price: price,
+          future: future,
+          image: _selectImage!.path);
+      addcarsl(cars);
+    } else if (selectedDatabase == DataBases.MediumDb) {
+      final name = nameContrl.text;
+      final model = modelContrl.text;
+      final km = kmContrl.text;
+      final dlnbr = dlNumberContrl.text;
+      final owner = ownerContrl.text;
+      final price = priceContrl.text;
+      final future = priceContrl.text;
+
+      if (name.isEmpty ||
+          model.isEmpty ||
+          km.isEmpty ||
+          dlnbr.isEmpty ||
+          owner.isEmpty ||
+          price.isEmpty ||
+          future.isEmpty) {
+        return;
+      }
+
+      final cars = MediumCarsModel(
+          name: name,
+          model: model,
+          km: km,
+          dlnumber: dlnbr,
+          owner: owner,
+          price: price,
+          future: future,
+          image: _selectImage!.path);
+      addcarsm(cars);
+    } else if (selectedDatabase == DataBases.LowDb) {
+      final name = nameContrl.text;
+      final model = modelContrl.text;
+      final km = kmContrl.text;
+      final dlnbr = dlNumberContrl.text;
+      final owner = ownerContrl.text;
+      final price = priceContrl.text;
+      final future = priceContrl.text;
+
+      if (name.isEmpty ||
+          model.isEmpty ||
+          km.isEmpty ||
+          dlnbr.isEmpty ||
+          owner.isEmpty ||
+          price.isEmpty ||
+          future.isEmpty) {
+        return;
+      }
+
+      final cars = LowCarsModel(
+          name: name,
+          model: model,
+          km: km,
+          dlnumber: dlnbr,
+          owner: owner,
+          price: price,
+          future: future,
+          image: _selectImage!.path);
+    
+      addcarsll(cars);
     }
-
-    final _cars = CarsModel(
-        name: _name,
-        model: _model,
-        km: _km,
-        dlnumber: _dlnbr,
-        owner: _owner,
-        price: _price,
-        future: _future,
-        image: _selectImage!.path);
-    addcarsl(_cars);
   }
 
   Future _pickImgGallery() async {

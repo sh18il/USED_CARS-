@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'package:used_caer/screens/home_screen.dart';
 import 'package:used_caer/screens/widgets/bottombar.dart';
 
 class Sing_in extends StatelessWidget {
@@ -14,15 +13,15 @@ class Sing_in extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              alignment: Alignment(-0.8, 0.6),
-              child: Text("ROYAL CARS ",
+              alignment: const Alignment(-0.8, 0.6),
+              child: const Text("ROYAL CARS ",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w500,
                     fontStyle: FontStyle.italic,
                   )),
             ),
-            Gap(30),
+            const Gap(30),
             SizedBox(
               height: 350,
               child: Image.asset(
@@ -45,13 +44,13 @@ class Sing_in extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
-                        prefixIcon: Icon(Icons.person_3),
+                        prefixIcon: const Icon(Icons.person_3),
                         hintText: 'USER NAME ',
                       ),
                     ),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -64,20 +63,20 @@ class Sing_in extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
-                        prefixIcon: Icon(Icons.hide_source_rounded),
+                        prefixIcon: const Icon(Icons.hide_source_rounded),
                         hintText: 'PASSWORD ',
                       ),
                     ),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 ElevatedButton(
-                    style: ButtonStyle(
+                    style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.black87),
                     ),
                     onPressed: () {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => BottomNav()));
+                          MaterialPageRoute(builder: (context) => const BottomNav()));
                     },
                     child: Container(
                         width: 50,
@@ -85,7 +84,7 @@ class Sing_in extends StatelessWidget {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: Text('Sing up')))
+                        child: const Text('Sing up')))
               ],
             )
           ],

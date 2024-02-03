@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:used_caer/model/low_cars_model.dart';
 
 import '../../functions/lowcars_functions.dart';
 
+// ignore: must_be_immutable
 class EditLowCarScreen extends StatefulWidget {
   String name;
   String model;
@@ -44,6 +46,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
 
   File? _selectImage;
 
+  @override
   void initState() {
     nameContrl = TextEditingController(text: widget.name);
     modelContrl = TextEditingController(text: widget.model);
@@ -61,7 +64,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(
+        title: const Center(
           child: Text("EDIT CARS",
               style: TextStyle(
                 fontSize: 32,
@@ -73,9 +76,10 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(20),
+              const Gap(20),
               Center(
-                child: Container(
+              
+                child: SizedBox(
                   width: 200,
                   height: 200,
                   child: CircleAvatar(
@@ -86,14 +90,14 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                   ),
                 ),
               ),
-              Gap(20),
-              Text('EDIT CAR PHOTO'),
+              const Gap(20),
+              const Text('EDIT CAR PHOTO'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -101,7 +105,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -109,7 +113,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       label: const Text("CAMERA")),
                 ],
               ),
-              Gap(30),
+              const Gap(30),
               Column(
                 children: [
                   Row(
@@ -147,7 +151,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -183,7 +187,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -219,7 +223,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Container(
                     width: 223,
                     height: 68,
@@ -235,13 +239,13 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       ),
                     ),
                   ),
-                  Gap(30),
+                  const Gap(30),
                   ElevatedButton(
                       onPressed: () {
                         updateAll();
                         Navigator.pop(context);
                       },
-                      child: Text('SUBMIT'))
+                      child: const Text('SUBMIT'))
                 ],
               )
             ],
@@ -280,7 +284,7 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
           price: pricelx,
           future: futurelx,
           image: imagelx);
-      editCarslow(widget.index, update);
+      editCarsll(widget.index, update);
     }
   }
 

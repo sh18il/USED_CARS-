@@ -1,31 +1,33 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:used_caer/model/low_cars_model.dart';
-import 'package:used_caer/screens/low_cars_pages/add_low_screen.dart';
+
 import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
 import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
 import '../../functions/lowcars_functions.dart';
 
-class Low_cars extends StatelessWidget {
-  const Low_cars({super.key});
+class Low_Cars extends StatelessWidget {
+  const Low_Cars({super.key});
 
   @override
   Widget build(BuildContext context) {
+    getAllCarsll();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(child: Text('LUXURY CARS')),
+        title: const Center(child: Text('LOW CARS')),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black87,
-        child: Icon(Icons.add_to_photos_outlined),
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => AddLowCars()));
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.black87,
+      //   child: Icon(Icons.add_to_photos_outlined),
+      //   onPressed: () {
+      //     Navigator.of(context)
+      //         .push(MaterialPageRoute(builder: (context) => AddLowCars()));
+      //   },
+      // ),
       body: Column(
         children: [
           Expanded(
@@ -67,12 +69,12 @@ class Low_cars extends StatelessWidget {
                                     width: 150,
                                     height: 130,
                                     decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      color: const Color.fromARGB(255, 255, 255, 255),
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: carlo.image != null
                                             ? FileImage(File(carlo.image!))
-                                            : AssetImage("image/carr1.png")
+                                            : const AssetImage("image/carr1.png")
                                                 as ImageProvider,
                                       ),
                                     ),
@@ -99,7 +101,7 @@ class Low_cars extends StatelessWidget {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      deletCarslow(index);
+                                                      deletCarsll(index);
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
@@ -133,7 +135,7 @@ class Low_cars extends StatelessWidget {
                                                               carlo.image,
                                                         )));
                                           },
-                                          icon: Icon(Icons.edit_document)),
+                                          icon: const Icon(Icons.edit_document)),
                                     ],
                                   )
                                 ],

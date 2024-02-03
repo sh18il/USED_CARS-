@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class ViewLowCars extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(
+        title: const Center(
           child: Text("PROFILE CARS",
               style: TextStyle(
                 fontSize: 32,
@@ -44,9 +46,9 @@ class ViewLowCars extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(40),
+              const Gap(40),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 200,
                   height: 200,
                   child: CircleAvatar(
@@ -56,7 +58,7 @@ class ViewLowCars extends StatelessWidget {
                   ),
                 ),
               ),
-              Gap(30),
+              const Gap(30),
               Column(
                 children: [
                   Row(
@@ -79,7 +81,7 @@ class ViewLowCars extends StatelessWidget {
                           child: Text(model)),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -100,7 +102,7 @@ class ViewLowCars extends StatelessWidget {
                           child: Text(dlnbr)),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -120,7 +122,7 @@ class ViewLowCars extends StatelessWidget {
                           child: Text(price)),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Container(
                       width: 223,
                       height: 68,
@@ -128,7 +130,7 @@ class ViewLowCars extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: Text(future)),
-                  Gap(30),
+                  const Gap(30),
                 ],
               )
             ],

@@ -1,8 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:used_caer/model/medium_cars_model.dart';
 
 import '../../functions/medium_functions.dart';
@@ -63,7 +66,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Center(
+        title: const Center(
           child: Text("EDIT CARS",
               style: TextStyle(
                 fontSize: 32,
@@ -75,7 +78,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(20),
+              const Gap(20),
               Center(
                 child: Container(
                   width: 200,
@@ -88,14 +91,14 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                   ),
                 ),
               ),
-              Gap(20),
-              Text('EDIT CAR PHOTO'),
+              const Gap(20),
+              const Text('EDIT CAR PHOTO'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -103,7 +106,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -111,7 +114,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       label: const Text("CAMERA")),
                 ],
               ),
-              Gap(30),
+              const Gap(30),
               Column(
                 children: [
                   Row(
@@ -149,7 +152,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -185,7 +188,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -221,7 +224,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  const Gap(30),
                   Container(
                     width: 223,
                     height: 68,
@@ -237,13 +240,13 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       ),
                     ),
                   ),
-                  Gap(30),
+                  const Gap(30),
                   ElevatedButton(
                       onPressed: () {
                         updateAll();
                         Navigator.pop(context);
                       },
-                      child: Text('SUBMIT'))
+                      child: const Text('SUBMIT'))
                 ],
               )
             ],

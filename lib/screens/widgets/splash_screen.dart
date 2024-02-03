@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:used_caer/screens/sign_in.dart';
+import 'package:used_caer/screens/widgets/sign_in.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('image/carr1.png'),
-          Text("ROYAL CARS",
+          const Text("ROYAL CARS",
               style: TextStyle(
                 fontSize: 48,
                 fontWeight: FontWeight.w400,

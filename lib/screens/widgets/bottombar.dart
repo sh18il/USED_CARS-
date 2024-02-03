@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:used_caer/screens/home_screen.dart';
-import 'package:used_caer/screens/luxury_cars_pages.dart';
+
 import 'package:used_caer/screens/settings.dart';
 
 class BottomNav extends StatefulWidget {
@@ -15,7 +15,6 @@ class _BottomNavState extends State<BottomNav> {
   final screens = [
     const HomeScreen(),
     const Setings(),
-    
   ];
 
   @override
@@ -40,6 +39,7 @@ class _BottomNavState extends State<BottomNav> {
               icon: Icon(Icons.storefront_sharp), label: 'settings'),
         ],
       ),
+   
     );
   }
 }

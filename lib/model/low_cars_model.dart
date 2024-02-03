@@ -1,5 +1,6 @@
-import 'package:hive/hive.dart';
- part 'low_cars_model.g.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'low_cars_model.g.dart';
 
 @HiveType(typeId: 3)
 class LowCarsModel {
@@ -19,17 +20,16 @@ class LowCarsModel {
   final String price;
   @HiveField(7)
   final String future;
-   @HiveField(8)
-   final String? image;
+  @HiveField(8)
+  final String? image;
 
-  LowCarsModel( {
-    required this.name,
-    required this.model,
-    required this.km,
-    required this.dlnumber,
-    required this.owner,
-    required this.price,
-    required this.future,
-    this.image
-  });
+  LowCarsModel(
+      {required this.name,
+      required this.model,
+      required this.km,
+      required this.dlnumber,
+      required this.owner,
+      required this.price,
+      required this.future,
+      this.image});
 }
