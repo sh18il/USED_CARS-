@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'package:used_caer/model/low_cars_model.dart';
 
@@ -17,8 +18,43 @@ class Low_Cars extends StatelessWidget {
     getAllCarsll();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: const Center(child: Text('LOW CARS')),
+        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
+        title: SizedBox(
+          width: double.infinity,
+          child: Container(
+            margin: EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(left: 10),
+            height: 40,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(10)),
+            child: TextFormField(
+              style: const TextStyle(color: Colors.white),
+              onChanged: (value) {
+                // setState(() {
+                //   search = value;
+                //   searchListUpdate();
+                //   print(value);
+                // });
+              },
+              decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Search here.. LoW cars',
+                  hintStyle: TextStyle(color: Colors.white),
+                  border: InputBorder.none),
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                // searchListUpdate();
+              },
+              icon: Icon(Icons.refresh)),
+        ],
       ),
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: Colors.black87,
@@ -63,18 +99,35 @@ class Low_Cars extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(carlo.name),
-                                  Text(carlo.dlnumber),
                                   Container(
-                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.vertical(
+                                          bottom: Radius.circular(30)),
+                                      color: Color.fromARGB(255, 224, 149, 144),
+                                    ),
+                                    width: 30,
+                                    child: Column(
+                                      children: [
+                                        Text('R'),
+                                        Text('o'),
+                                        Text('Y'),
+                                        Text('A'),
+                                        Text('L'),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 200,
                                     height: 130,
                                     decoration: BoxDecoration(
-                                      color: const Color.fromARGB(255, 255, 255, 255),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color.fromARGB(255, 213, 201, 201),
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: carlo.image != null
                                             ? FileImage(File(carlo.image!))
-                                            : const AssetImage("image/carr1.png")
+                                            : const AssetImage(
+                                                    "image/carr1.png")
                                                 as ImageProvider,
                                       ),
                                     ),
@@ -87,9 +140,8 @@ class Low_Cars extends StatelessWidget {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: const Text(
-                                                    'Confirm Deletion'),
-                                                content: const Text(
+                                                title: Text('Confirm Deletion'),
+                                                content: Text(
                                                     'Are you sure you want to delete this car?'),
                                                 actions: [
                                                   TextButton(
@@ -97,7 +149,7 @@ class Low_Cars extends StatelessWidget {
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
-                                                    child: const Text('Cancel'),
+                                                    child: Text('Cancel'),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
@@ -105,14 +157,14 @@ class Low_Cars extends StatelessWidget {
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
-                                                    child: const Text('Delete'),
+                                                    child: Text('Delete'),
                                                   ),
                                                 ],
                                               );
                                             },
                                           );
                                         },
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         ),
@@ -132,14 +184,19 @@ class Low_Cars extends StatelessWidget {
                                                           price: carlo.price,
                                                           future: carlo.future,
                                                           imagepath:
-                                                              carlo.image,
+                                                              carlo.image ?? "",
                                                         )));
                                           },
-                                          icon: const Icon(Icons.edit_document)),
+                                          icon: Icon(Icons.edit_document)),
                                     ],
                                   )
                                 ],
-                              )
+                              ),
+                              Gap(20),
+                              Text(carlo.name),
+                              Gap(20),
+                              Text(carlo.dlnumber),
+                              Gap(20),
                             ],
                           ),
                         ),

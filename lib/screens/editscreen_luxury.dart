@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
 
-// ignore: must_be_immutable
+
 class EditLuxury_Screen extends StatefulWidget {
   String name;
   String model;
@@ -78,13 +78,14 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
               const Gap(20),
               Center(
                 child: SizedBox(
-                  width: 200,
                   height: 200,
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 25, 25, 81),
-                    backgroundImage: _selectImage != null
-                        ? FileImage(_selectImage!)
-                        : const AssetImage("image/rolss.png") as ImageProvider,
+                  child: Container(
+                    child: Image(
+                      image: _selectImage != null
+                          ? FileImage(_selectImage!)
+                          : const AssetImage("image/carr1.png")
+                              as ImageProvider,
+                    ),
                   ),
                 ),
               ),
@@ -95,7 +96,8 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -103,7 +105,8 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -134,7 +137,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                       Container(
                         width: 107,
-                        height: 34,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
@@ -155,7 +157,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                     children: [
                       Container(
                         width: 121,
-                        height: 33,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
@@ -170,7 +171,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                       Container(
                         width: 146,
-                        height: 33,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
@@ -191,7 +191,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                     children: [
                       Container(
                         width: 107,
-                        height: 34,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
@@ -206,7 +205,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                       ),
                       Container(
                         width: 174,
-                        height: 33,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
@@ -224,7 +222,6 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
                   const Gap(30),
                   Container(
                     width: 223,
-                    height: 68,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -283,6 +280,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
           future: futurelx,
           image: imagelx);
       editCarsL(widget.index, update);
+     
     }
   }
 
@@ -311,3 +309,5 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
     });
   }
 }
+
+

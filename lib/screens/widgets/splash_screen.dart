@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:used_caer/screens/widgets/register.dart';
 import 'package:used_caer/screens/widgets/sign_in.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -45,6 +46,6 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3));
 
     Navigator.of(context).pushReplacement(
-        (MaterialPageRoute(builder: (ctx) => const Sing_in())));
+        (MaterialPageRoute(builder: (ctx) => const RegisterScreen())));
   }
 }

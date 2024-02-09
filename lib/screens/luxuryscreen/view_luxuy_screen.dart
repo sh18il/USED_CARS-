@@ -1,11 +1,9 @@
-// ignore_for_file: must_be_immutable
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class ViewLowCars extends StatelessWidget {
+class ViewLuxuryScreen extends StatelessWidget {
   String name;
   String model;
   String km;
@@ -15,7 +13,7 @@ class ViewLowCars extends StatelessWidget {
   String price;
   String future;
   dynamic imagepath;
-  ViewLowCars({
+  ViewLuxuryScreen({
     super.key,
     required this.name,
     required this.model,

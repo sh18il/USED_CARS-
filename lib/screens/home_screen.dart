@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:used_caer/screens/add_screen.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+
 import 'package:used_caer/screens/low_cars_pages/low_cars.dart';
-import 'package:used_caer/screens/luxury_cars_pages.dart';
+import 'package:used_caer/screens/luxuryscreen/luxury_cars_pages.dart';
 import 'package:used_caer/screens/medium_budjet_screen/medium_pages.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,14 +12,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black87,
-        child: const Icon(Icons.add_to_photos_outlined),
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const AddScrees()));
-        },
-      ),
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Center(child: Text('CARS GAREGE')),
@@ -39,7 +32,10 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.black),
+                      border: GradientBoxBorder(
+                          gradient: LinearGradient(
+                              colors: [Colors.red, Colors.yellow, Colors.cyan]),
+                          width: 2),
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.transparent),
                   width: double.infinity,
@@ -71,15 +67,20 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.black),
+                      border: GradientBoxBorder(
+                          gradient: LinearGradient(colors: [
+                            Colors.red,
+                            Colors.yellow,
+                            Colors.green
+                          ]),
+                          width: 2),
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.transparent),
                   width: double.infinity,
                   child: Column(
                     children: [
                       SizedBox(
-                          height: 190,
-                          child: Image.asset('image/mercedesbenz_.png')),
+                          height: 190, child: Image.asset('image/3jvscb.webp')),
                       const Text(
                         'MEDIUM BUDGET',
                         style: TextStyle(
@@ -103,14 +104,21 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.black),
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.transparent),
+                    border: GradientBoxBorder(
+                        gradient: LinearGradient(colors: [
+                          Colors.red,
+                          Colors.yellow,
+                          Colors.blueAccent
+                        ]),
+                        width: 2),
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.transparent,
+                  ),
                   width: double.infinity,
                   child: Column(
                     children: [
                       SizedBox(
-                          height: 190, child: Image.asset('image/carr1.png')),
+                          height: 190, child: Image.asset('image/hudai.png')),
                       const Text(
                         'low BUDGET',
                         style: TextStyle(

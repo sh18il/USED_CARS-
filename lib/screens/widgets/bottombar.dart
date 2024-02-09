@@ -1,4 +1,6 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:used_caer/screens/add_screen.dart';
 import 'package:used_caer/screens/home_screen.dart';
 
 import 'package:used_caer/screens/settings.dart';
@@ -13,33 +15,40 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentIndex = 0;
   final screens = [
-    const HomeScreen(),
-    const Setings(),
+     HomeScreen(),
+    AddScrees(),
+    Settings(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        elevation: 0,
-        currentIndex: currentIndex,
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: Duration(milliseconds: 400),
+        animationCurve: Curves.linear,
+        backgroundColor: Colors.transparent,
+        color: Color.fromARGB(228, 34, 5, 15),
         onTap: (newIndex) {
           setState(() {
             currentIndex = newIndex;
           });
         },
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.black,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.storefront_sharp), label: 'settings'),
+        items: [
+          Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.settings,
+            color: Colors.white,
+          ),
         ],
       ),
-   
     );
   }
 }

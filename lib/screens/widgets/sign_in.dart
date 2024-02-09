@@ -75,8 +75,8 @@ class Sing_in extends StatelessWidget {
                       backgroundColor: MaterialStatePropertyAll(Colors.black87),
                     ),
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const BottomNav()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const BottomNav()));
                     },
                     child: Container(
                         width: 50,
@@ -84,7 +84,7 @@ class Sing_in extends StatelessWidget {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: const Text('Sing up')))
+                        child: const Text('LOGIN')))
               ],
             )
           ],

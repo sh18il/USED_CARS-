@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
 
 import 'package:used_caer/screens/editscreen_luxury.dart';
-import 'package:used_caer/screens/view_luxuy_screen.dart';
+import 'package:used_caer/screens/luxuryscreen/view_luxuy_screen.dart';
 
 class Luxury_cars_Screen extends StatefulWidget {
   const Luxury_cars_Screen({Key? key}) : super(key: key);
@@ -32,13 +33,16 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(221, 90, 72, 72),
+        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
         title: SizedBox(
           width: double.infinity,
           child: Container(
-            width: double.infinity,
+            margin: EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(left: 10),
             height: 40,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(10)),
             child: TextFormField(
               style: const TextStyle(color: Colors.white),
               onChanged: (value) {
@@ -49,12 +53,23 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                 });
               },
               decoration: InputDecoration(
-                  icon: Icon(Icons.search),
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
                   hintText: 'Search Luxury cars',
-                  suffixIcon: Icon(Icons.qr_code_scanner)),
+                  hintStyle: TextStyle(color: Colors.white),
+                  border: InputBorder.none),
             ),
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                searchListUpdate();
+              },
+              icon: Icon(Icons.refresh)),
+        ],
       ),
       body: Column(
         children: [
@@ -71,6 +86,9 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               },
             ),
           ),
+          Container(
+            child: Text('this$sumLuxury()'),
+          )
         ],
       ),
     );
@@ -107,13 +125,29 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(car.name),
-                            Text(car.dlnumber),
                             Container(
-                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                    bottom: Radius.circular(30)),
+                                color: Color.fromARGB(255, 224, 149, 144),
+                              ),
+                              width: 30,
+                              child: Column(
+                                children: [
+                                  Text('R'),
+                                  Text('o'),
+                                  Text('Y'),
+                                  Text('A'),
+                                  Text('L'),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 200,
                               height: 130,
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(50),
+                                color: Color.fromARGB(255, 213, 201, 201),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: car.image != null
@@ -179,7 +213,10 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                               ],
                             )
                           ],
-                        )
+                        ),
+                        Text(car.name),
+                        Gap(20),
+                        Text(car.dlnumber),
                       ],
                     ),
                   ),
@@ -195,5 +232,15 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               );
             },
           );
+  }
+
+  int sumLuxury() {
+    int sum = 0;
+
+    for (int i = 0; i < searchedList.length; i++) {
+      sum += searchedList[i].price as int;
+    }
+    print(sum);
+    return sum;
   }
 }

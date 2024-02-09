@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
@@ -37,6 +38,7 @@ class _AddScreesState extends State<AddScrees> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.black87,
         title: const Center(
           child: Text("ADD CARS",
@@ -50,14 +52,16 @@ class _AddScreesState extends State<AddScrees> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Gap(40),
+              const Gap(20),
               Center(
-                child: SizedBox(
-                  width: 200,
-                  height: 200,
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    backgroundImage: _selectImage != null
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  width: 180,
+                  height: 130,
+                  child: Image(
+                    image: _selectImage != null
                         ? FileImage(_selectImage!)
                         : const AssetImage("image/carr1.png") as ImageProvider,
                   ),
@@ -69,7 +73,7 @@ class _AddScreesState extends State<AddScrees> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor: Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -77,7 +81,7 @@ class _AddScreesState extends State<AddScrees> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor: Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -95,11 +99,11 @@ class _AddScreesState extends State<AddScrees> {
                       children: [
                         Container(
                           width: 172,
-                          height: 41,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.text,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter name';
@@ -110,18 +114,23 @@ class _AddScreesState extends State<AddScrees> {
                             controller: nameContrl,
                             decoration: InputDecoration(
                               hintText: 'NAME',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.blue,
+                                    Colors.red,
+                                    Colors.green
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
                         ),
                         Container(
                           width: 107,
-                          height: 34,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter model';
@@ -132,7 +141,12 @@ class _AddScreesState extends State<AddScrees> {
                             controller: modelContrl,
                             decoration: InputDecoration(
                               hintText: 'MODEL',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow,
+                                    Colors.red,
+                                    Colors.blue
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
@@ -144,12 +158,12 @@ class _AddScreesState extends State<AddScrees> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: 121,
-                          height: 33,
+                          width: 119,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter Km';
@@ -160,18 +174,23 @@ class _AddScreesState extends State<AddScrees> {
                             controller: kmContrl,
                             decoration: InputDecoration(
                               hintText: 'KM',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.green,
+                                    Colors.red,
+                                    Colors.black
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
                         ),
                         Container(
                           width: 146,
-                          height: 33,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.multiline,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter Dl number';
@@ -182,7 +201,12 @@ class _AddScreesState extends State<AddScrees> {
                             controller: dlNumberContrl,
                             decoration: InputDecoration(
                               hintText: 'DL NUMBER',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.green,
+                                    Colors.red,
+                                    Colors.black
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
@@ -195,11 +219,11 @@ class _AddScreesState extends State<AddScrees> {
                       children: [
                         Container(
                           width: 107,
-                          height: 34,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter ownership';
@@ -210,18 +234,23 @@ class _AddScreesState extends State<AddScrees> {
                             controller: ownerContrl,
                             decoration: InputDecoration(
                               hintText: 'OWNERSHIP',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.green,
+                                    Colors.red,
+                                    Colors.black
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
                         ),
                         Container(
                           width: 174,
-                          height: 33,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white),
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter price';
@@ -232,7 +261,12 @@ class _AddScreesState extends State<AddScrees> {
                             controller: priceContrl,
                             decoration: InputDecoration(
                               hintText: 'PRICE',
-                              border: OutlineInputBorder(
+                              border: GradientOutlineInputBorder(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.green,
+                                    Colors.red,
+                                    Colors.black
+                                  ]),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                           ),
@@ -264,11 +298,11 @@ class _AddScreesState extends State<AddScrees> {
                     const Gap(30),
                     Container(
                       width: 223,
-                      height: 68,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: TextFormField(
+                        keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'enter futers';
@@ -279,20 +313,29 @@ class _AddScreesState extends State<AddScrees> {
                         controller: futureContrl,
                         decoration: InputDecoration(
                           hintText: 'FUETERS',
-                          border: OutlineInputBorder(
+                          border: GradientOutlineInputBorder(
+                              gradient: LinearGradient(colors: [
+                                Colors.green,
+                                Colors.red,
+                                Colors.black
+                              ]),
                               borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
                     ),
                     const Gap(30),
                     ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Color.fromARGB(237, 248, 66, 5))),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             onAddCarsButn();
-                            Navigator.pop(context);
+                            print(futureContrl);
                           }
                         },
-                        child: const Text('SUBMIT'))
+                        child: const Text('SUBMIT')),
+                    Gap(30),
                   ],
                 ),
               )
@@ -311,7 +354,7 @@ class _AddScreesState extends State<AddScrees> {
       final dlnbr = dlNumberContrl.text;
       final owner = ownerContrl.text;
       final price = priceContrl.text;
-      final future = priceContrl.text;
+      final future = futureContrl.text;
 
       if (name.isEmpty ||
           model.isEmpty ||
@@ -340,7 +383,7 @@ class _AddScreesState extends State<AddScrees> {
       final dlnbr = dlNumberContrl.text;
       final owner = ownerContrl.text;
       final price = priceContrl.text;
-      final future = priceContrl.text;
+      final future = futureContrl.text;
 
       if (name.isEmpty ||
           model.isEmpty ||
@@ -369,7 +412,7 @@ class _AddScreesState extends State<AddScrees> {
       final dlnbr = dlNumberContrl.text;
       final owner = ownerContrl.text;
       final price = priceContrl.text;
-      final future = priceContrl.text;
+      final future = futureContrl.text;
 
       if (name.isEmpty ||
           model.isEmpty ||
@@ -390,7 +433,7 @@ class _AddScreesState extends State<AddScrees> {
           price: price,
           future: future,
           image: _selectImage!.path);
-    
+
       addcarsll(cars);
     }
   }

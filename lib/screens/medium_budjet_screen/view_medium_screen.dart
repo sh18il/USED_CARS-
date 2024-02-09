@@ -45,88 +45,128 @@ class MediumViewScreen extends StatelessWidget {
             children: [
               const Gap(40),
               Center(
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 80,
-                    backgroundImage: FileImage(File(imagepath)),
-                  ),
-                ),
-              ),
+                  child: Image(
+                image: FileImage(File(imagepath)),
+              )),
               const Gap(30),
               Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        width: 172,
-                        height: 41,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: Text(name),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('CarName :'),
+                                Text(
+                                  name,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
                       ),
-                      Container(
-                          width: 107,
-                          height: 34,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
-                          child: Text(model)),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('MODEL :'),
+                                Text(
+                                  model,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                   const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        width: 121,
-                        height: 33,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: Text(km),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('KM :'),
+                                Text(
+                                  km,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
                       ),
-                      Container(
-                          width: 146,
-                          height: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
-                          child: Text(dlnbr)),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('DL NUMBER :'),
+                                Text(
+                                  dlnbr,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                   const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          width: 107,
-                          height: 34,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
-                          child: Text(owner)),
-                      Container(
-                          width: 174,
-                          height: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
-                          child: Text(price)),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('OWNER :'),
+                                Text(
+                                  owner,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
+                      ),
+                      Card(
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                Text('PRICE :'),
+                                Text(
+                                  price,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                   const Gap(30),
-                  Container(
-                      width: 223,
-                      height: 68,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Text(future)),
+                  Card(
+                    child: Container(
+                        width: 180,
+                        height: 70,
+                        child: Column(
+                          children: [
+                            Text('FUTURE :'),
+                            Text(
+                              future,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        )),
+                  ),
                   const Gap(30),
                 ],
               )

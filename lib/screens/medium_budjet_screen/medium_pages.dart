@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'package:used_caer/functions/medium_functions.dart';
 
@@ -31,31 +32,50 @@ class _Midium_carsState extends State<Midium_cars> {
   @override
   Widget build(BuildContext context) {
     getAllCarsm();
+    searchListUpdatem();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
         title: SizedBox(
           width: double.infinity,
-          child: Container(
-            width: double.infinity,
-            height: 40,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: TextFormField(
-              style: const TextStyle(color: Colors.white),
-              onChanged: (value) {
-                setState(() {
-                  searchm = value;
-                  searchListUpdatem();
-                  print(value);
-                });
-              },
-              decoration: InputDecoration(
-                  icon: Icon(Icons.search),
-                  hintText: 'Search Luxury cars',
-                  suffixIcon: Icon(Icons.qr_code_scanner)),
-            ),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 10),
+                height: 40,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  style: const TextStyle(color: Colors.white),
+                  onChanged: (value) {
+                    setState(() {
+                      searchm = value;
+                      searchListUpdatem();
+                      print(value);
+                    });
+                  },
+                  decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      hintText: 'Search Medium cars',
+                      hintStyle: TextStyle(color: Colors.white),
+                      border: InputBorder.none),
+                ),
+              ),
+            ],
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                searchListUpdatem();
+              },
+              icon: Icon(Icons.refresh)),
+        ],
       ),
       body: Column(
         children: [
@@ -96,14 +116,34 @@ class _Midium_carsState extends State<Midium_cars> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(carm.name),
-                                            Text(carm.dlnumber),
                                             Container(
-                                              width: 150,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.vertical(
+                                                        bottom: Radius.circular(
+                                                            30)),
+                                                color: Color.fromARGB(
+                                                    255, 224, 149, 144),
+                                              ),
+                                              width: 30,
+                                              child: Column(
+                                                children: [
+                                                  Text('R'),
+                                                  Text('o'),
+                                                  Text('Y'),
+                                                  Text('A'),
+                                                  Text('L'),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 200,
                                               height: 130,
                                               decoration: BoxDecoration(
-                                                color: const Color.fromARGB(
-                                                    255, 255, 255, 255),
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: Color.fromARGB(
+                                                    255, 213, 201, 201),
                                                 image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: carm.image != null
@@ -124,9 +164,9 @@ class _Midium_carsState extends State<Midium_cars> {
                                                       builder: (BuildContext
                                                           context) {
                                                         return AlertDialog(
-                                                          title: const Text(
+                                                          title: Text(
                                                               'Confirm Deletion'),
-                                                          content: const Text(
+                                                          content: Text(
                                                               'Are you sure you want to delete this car?'),
                                                           actions: [
                                                             TextButton(
@@ -135,7 +175,7 @@ class _Midium_carsState extends State<Midium_cars> {
                                                                         context)
                                                                     .pop();
                                                               },
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Cancel'),
                                                             ),
                                                             TextButton(
@@ -146,7 +186,7 @@ class _Midium_carsState extends State<Midium_cars> {
                                                                         context)
                                                                     .pop();
                                                               },
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Delete'),
                                                             ),
                                                           ],
@@ -154,39 +194,48 @@ class _Midium_carsState extends State<Midium_cars> {
                                                       },
                                                     );
                                                   },
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.delete,
                                                     color: Colors.red,
                                                   ),
                                                 ),
                                                 IconButton(
                                                     onPressed: () {
-                                                      Navigator.of(context).push(MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MediumEditScreen(
-                                                                  name:
-                                                                      carm.name,
-                                                                  model: carm
-                                                                      .model,
-                                                                  km: carm.km,
-                                                                  index: index,
-                                                                  dlnbr: carm
-                                                                      .dlnumber,
-                                                                  owner: carm
-                                                                      .owner,
-                                                                  price: carm
-                                                                      .price,
-                                                                  future: carm
-                                                                      .future,
-                                                                  imagepath: carm
-                                                                      .image)));
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  MediumEditScreen(
+                                                                    name: carm
+                                                                        .name,
+                                                                    model: carm
+                                                                        .model,
+                                                                    km: carm.km,
+                                                                    index:
+                                                                        index,
+                                                                    dlnbr: carm
+                                                                        .dlnumber,
+                                                                    owner: carm
+                                                                        .owner,
+                                                                    price: carm
+                                                                        .price,
+                                                                    future: carm
+                                                                        .future,
+                                                                    imagepath:
+                                                                        carm.image ??
+                                                                            "",
+                                                                  )));
                                                     },
-                                                    icon: const Icon(
+                                                    icon: Icon(
                                                         Icons.edit_document)),
                                               ],
                                             )
                                           ],
-                                        )
+                                        ),
+                                        Gap(10),
+                                        Text(carm.name),
+                                        Gap(20),
+                                        Text(carm.dlnumber),
+                                        Gap(10),
                                       ],
                                     ),
                                   ),
@@ -229,14 +278,32 @@ class _Midium_carsState extends State<Midium_cars> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(carm.name),
-                                        Text(carm.dlnumber),
                                         Container(
-                                          width: 150,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.vertical(
+                                                bottom: Radius.circular(30)),
+                                            color: Color.fromARGB(
+                                                255, 224, 149, 144),
+                                          ),
+                                          width: 30,
+                                          child: Column(
+                                            children: [
+                                              Text('R'),
+                                              Text('o'),
+                                              Text('Y'),
+                                              Text('A'),
+                                              Text('L'),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 200,
                                           height: 130,
                                           decoration: BoxDecoration(
-                                            color: const Color.fromARGB(
-                                                255, 255, 255, 255),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: Color.fromARGB(
+                                                255, 213, 201, 201),
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: carm.image != null
@@ -256,9 +323,9 @@ class _Midium_carsState extends State<Midium_cars> {
                                                   builder:
                                                       (BuildContext context) {
                                                     return AlertDialog(
-                                                      title: const Text(
+                                                      title: Text(
                                                           'Confirm Deletion'),
-                                                      content: const Text(
+                                                      content: Text(
                                                           'Are you sure you want to delete this car?'),
                                                       actions: [
                                                         TextButton(
@@ -267,8 +334,7 @@ class _Midium_carsState extends State<Midium_cars> {
                                                                     context)
                                                                 .pop();
                                                           },
-                                                          child: const Text(
-                                                              'Cancel'),
+                                                          child: Text('Cancel'),
                                                         ),
                                                         TextButton(
                                                           onPressed: () {
@@ -277,15 +343,14 @@ class _Midium_carsState extends State<Midium_cars> {
                                                                     context)
                                                                 .pop();
                                                           },
-                                                          child: const Text(
-                                                              'Delete'),
+                                                          child: Text('Delete'),
                                                         ),
                                                       ],
                                                     );
                                                   },
                                                 );
                                               },
-                                              icon: const Icon(
+                                              icon: Icon(
                                                 Icons.delete,
                                                 color: Colors.red,
                                               ),
@@ -296,29 +361,35 @@ class _Midium_carsState extends State<Midium_cars> {
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               MediumEditScreen(
-                                                                  name:
-                                                                      carm.name,
-                                                                  model: carm
-                                                                      .model,
-                                                                  km: carm.km,
-                                                                  index: index,
-                                                                  dlnbr: carm
-                                                                      .dlnumber,
-                                                                  owner: carm
-                                                                      .owner,
-                                                                  price: carm
-                                                                      .price,
-                                                                  future: carm
-                                                                      .future,
-                                                                  imagepath: carm
-                                                                      .image)));
+                                                                name: carm.name,
+                                                                model:
+                                                                    carm.model,
+                                                                km: carm.km,
+                                                                index: index,
+                                                                dlnbr: carm
+                                                                    .dlnumber,
+                                                                owner:
+                                                                    carm.owner,
+                                                                price:
+                                                                    carm.price,
+                                                                future:
+                                                                    carm.future,
+                                                                imagepath:
+                                                                    carm.image ??
+                                                                        "",
+                                                              )));
                                                 },
-                                                icon: const Icon(
-                                                    Icons.edit_document)),
+                                                icon:
+                                                    Icon(Icons.edit_document)),
                                           ],
                                         )
                                       ],
-                                    )
+                                    ),
+                                    Gap(10),
+                                    Text(carm.name),
+                                    Gap(20),
+                                    Text(carm.dlnumber),
+                                    Gap(10),
                                   ],
                                 ),
                               ),
