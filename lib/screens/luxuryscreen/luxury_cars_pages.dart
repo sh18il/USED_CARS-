@@ -86,9 +86,9 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               },
             ),
           ),
-          Container(
-            child: Text('this$sumLuxury()'),
-          )
+          Text(
+            'Total Luxury Cars Found: ${searchedList.length}',
+          ),
         ],
       ),
     );
@@ -238,7 +238,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
     int sum = 0;
 
     for (int i = 0; i < searchedList.length; i++) {
-      sum += searchedList[i].price as int;
+      sum += searchedList as int;
     }
     print(sum);
     return sum;

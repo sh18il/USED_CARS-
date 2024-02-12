@@ -409,8 +409,13 @@ class _Midium_carsState extends State<Midium_cars> {
               },
             ),
           ),
+          Text(
+            'Total Medium Cars Found: ${ttme}',
+          ),
         ],
       ),
     );
   }
+
+  final ttme = carsMediumListNotifier.value.length;
 }

@@ -57,8 +57,8 @@ class _SettingsState extends State<Settings> {
   void _handleListItemTap(int index) {
     switch (index) {
       case 0:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Sing_in()));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => Sing_in()));
         break;
       case 1:
         _showExitConfirmationDialog();

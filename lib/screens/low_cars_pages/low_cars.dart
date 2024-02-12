@@ -216,6 +216,9 @@ class Low_Cars extends StatelessWidget {
               },
             ),
           ),
+          Text(
+            'Total Low Cars Found: ${carsLowListNotifier.value.length}',
+          ),
         ],
       ),
     );
