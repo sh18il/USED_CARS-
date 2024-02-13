@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:used_caer/functions/function.dart';
+import 'package:used_caer/functions/medium_functions.dart';
 import 'package:used_caer/model/cars_model.dart';
 
 import 'package:used_caer/screens/editscreen_luxury.dart';
@@ -25,12 +27,6 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
         .where(
           (CarsModel) =>
               CarsModel.name.toLowerCase().contains(search.toLowerCase()),
-        )
-        .toList();
-    searchedList = carsListNotifier.value
-        .where(
-          (CarsModel) =>
-              CarsModel.price.toLowerCase().contains(search.toLowerCase()),
         )
         .toList();
   }
@@ -84,13 +80,18 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
           Expanded(
             child: ValueListenableBuilder(
               valueListenable: carsListNotifier,
-              builder: (BuildContext ctx, List<CarsModel> studentList,
-                  Widget? child) {
+              builder:
+                  (BuildContext ctx, List<CarsModel> carLList, Widget? child) {
                 return search.isNotEmpty
                     ? searchedList.isEmpty
-                        ? const Center(child: Text('No results found'))
+                        ? ListView(
+                            children: [
+                              Lottie.asset(
+                                  'assets/Animation - 1707811402766.json'),
+                            ],
+                          )
                         : buildCArList(searchedList)
-                    : buildCArList(searchedList);
+                    : buildCArList(carLList);
               },
             ),
           ),
@@ -104,8 +105,14 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
 
   Widget buildCArList(List<CarsModel> carsList) {
     return carsList.isEmpty
-        ? const Center(
-            child: Text('No cars available'),
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Lottie.asset('assets/Animation - 1707811402766.json'),
+              ),
+              // Text('No cars available'),
+            ],
           )
         : ListView.separated(
             itemCount: carsList.length,
@@ -241,4 +248,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
             },
           );
   }
+
+  List<CarsModel> sumof = [];
+  var ff = carsListNotifier.value.where((car) => car.price is int);
 }

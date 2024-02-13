@@ -71,31 +71,31 @@ class _SettingsState extends State<Settings> {
     }
   }
 
-  void _showExitConfirmationDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Confirm Exit"),
-          content: const Text("Are you sure you want to exit the application?"),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("Cancel"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text("Exit"),
-              onPressed: () {
-                SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void _showExitConfirmationDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text("Confirm Exit"),
+  //         content: const Text("Are you sure you want to exit the application?"),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: const Text("Cancel"),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //           TextButton(
+  //             child: const Text("Exit"),
+  //             onPressed: () {
+  //               SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   void _showResetConfirmationDialog() {
     showDialog(
