@@ -22,8 +22,8 @@ class Low_Cars extends StatelessWidget {
         title: SizedBox(
           width: double.infinity,
           child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            padding: EdgeInsets.only(left: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10),
             height: 40,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
@@ -37,7 +37,7 @@ class Low_Cars extends StatelessWidget {
                 //   print(value);
                 // });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   icon: Icon(
                     Icons.search,
                     color: Colors.white,
@@ -53,7 +53,7 @@ class Low_Cars extends StatelessWidget {
               onPressed: () {
                 // searchListUpdate();
               },
-              icon: Icon(Icons.refresh)),
+              icon: const Icon(Icons.refresh)),
         ],
       ),
       // floatingActionButton: FloatingActionButton(
@@ -100,13 +100,13 @@ class Low_Cars extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       borderRadius: BorderRadius.vertical(
                                           bottom: Radius.circular(30)),
                                       color: Color.fromARGB(255, 224, 149, 144),
                                     ),
                                     width: 30,
-                                    child: Column(
+                                    child: const Column(
                                       children: [
                                         Text('R'),
                                         Text('o'),
@@ -121,7 +121,7 @@ class Low_Cars extends StatelessWidget {
                                     height: 130,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Color.fromARGB(255, 213, 201, 201),
+                                      color: const Color.fromARGB(255, 213, 201, 201),
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: carlo.image != null
@@ -140,8 +140,8 @@ class Low_Cars extends StatelessWidget {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: Text('Confirm Deletion'),
-                                                content: Text(
+                                                title: const Text('Confirm Deletion'),
+                                                content: const Text(
                                                     'Are you sure you want to delete this car?'),
                                                 actions: [
                                                   TextButton(
@@ -149,7 +149,7 @@ class Low_Cars extends StatelessWidget {
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
-                                                    child: Text('Cancel'),
+                                                    child: const Text('Cancel'),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
@@ -157,14 +157,14 @@ class Low_Cars extends StatelessWidget {
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
-                                                    child: Text('Delete'),
+                                                    child: const Text('Delete'),
                                                   ),
                                                 ],
                                               );
                                             },
                                           );
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         ),
@@ -187,16 +187,16 @@ class Low_Cars extends StatelessWidget {
                                                               carlo.image ?? "",
                                                         )));
                                           },
-                                          icon: Icon(Icons.edit_document)),
+                                          icon: const Icon(Icons.edit_document)),
                                     ],
                                   )
                                 ],
                               ),
-                              Gap(20),
+                              const Gap(20),
                               Text(carlo.name),
-                              Gap(20),
+                              const Gap(20),
                               Text(carlo.dlnumber),
-                              Gap(20),
+                              const Gap(20),
                             ],
                           ),
                         ),

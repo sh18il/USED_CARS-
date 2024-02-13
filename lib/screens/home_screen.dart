@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Center(child: Text('CARS GAREGE')),
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
+        backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                      border: GradientBoxBorder(
+                      border: const GradientBoxBorder(
                           gradient: LinearGradient(
                               colors: [Colors.red, Colors.yellow, Colors.cyan]),
                           width: 2),
@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                      border: GradientBoxBorder(
+                      border: const GradientBoxBorder(
                           gradient: LinearGradient(colors: [
                             Colors.red,
                             Colors.yellow,
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 220,
                   decoration: BoxDecoration(
-                    border: GradientBoxBorder(
+                    border: const GradientBoxBorder(
                         gradient: LinearGradient(colors: [
                           Colors.red,
                           Colors.yellow,

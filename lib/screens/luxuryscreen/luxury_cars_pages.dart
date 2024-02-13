@@ -22,8 +22,16 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
   void searchListUpdate() {
     getAllCars();
     searchedList = carsListNotifier.value
-        .where((CarsModel) =>
-            CarsModel.name.toLowerCase().contains(search.toLowerCase()))
+        .where(
+          (CarsModel) =>
+              CarsModel.name.toLowerCase().contains(search.toLowerCase()),
+        )
+        .toList();
+    searchedList = carsListNotifier.value
+        .where(
+          (CarsModel) =>
+              CarsModel.price.toLowerCase().contains(search.toLowerCase()),
+        )
         .toList();
   }
 
@@ -37,8 +45,8 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
         title: SizedBox(
           width: double.infinity,
           child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            padding: EdgeInsets.only(left: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10),
             height: 40,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
@@ -52,7 +60,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                   print(value);
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   icon: Icon(
                     Icons.search,
                     color: Colors.white,
@@ -68,7 +76,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               onPressed: () {
                 searchListUpdate();
               },
-              icon: Icon(Icons.refresh)),
+              icon: const Icon(Icons.refresh)),
         ],
       ),
       body: Column(
@@ -80,7 +88,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                   Widget? child) {
                 return search.isNotEmpty
                     ? searchedList.isEmpty
-                        ? Center(child: Text('No results found'))
+                        ? const Center(child: Text('No results found'))
                         : buildCArList(searchedList)
                     : buildCArList(searchedList);
               },
@@ -96,7 +104,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
 
   Widget buildCArList(List<CarsModel> carsList) {
     return carsList.isEmpty
-        ? Center(
+        ? const Center(
             child: Text('No cars available'),
           )
         : ListView.separated(
@@ -104,7 +112,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
             itemBuilder: (context, index) {
               CarsModel car = carsList[index];
               return Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -126,13 +134,13 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.vertical(
                                     bottom: Radius.circular(30)),
                                 color: Color.fromARGB(255, 224, 149, 144),
                               ),
                               width: 30,
-                              child: Column(
+                              child: const Column(
                                 children: [
                                   Text('R'),
                                   Text('o'),
@@ -147,7 +155,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                               height: 130,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color.fromARGB(255, 213, 201, 201),
+                                color: const Color.fromARGB(255, 213, 201, 201),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: car.image != null
@@ -165,29 +173,29 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          title: Text('Confirm Deletion'),
-                                          content: Text(
+                                          title: const Text('Confirm Deletion'),
+                                          content: const Text(
                                               'Are you sure you want to delete this car?'),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Cancel'),
+                                              child: const Text('Cancel'),
                                             ),
                                             TextButton(
                                               onPressed: () {
                                                 deletCarsL(index);
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Delete'),
+                                              child: const Text('Delete'),
                                             ),
                                           ],
                                         );
                                       },
                                     );
                                   },
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.delete,
                                     color: Colors.red,
                                   ),
@@ -209,13 +217,13 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                                                     imagepath: car.image ?? "",
                                                   )));
                                     },
-                                    icon: Icon(Icons.edit_document)),
+                                    icon: const Icon(Icons.edit_document)),
                               ],
                             )
                           ],
                         ),
                         Text(car.name),
-                        Gap(20),
+                        const Gap(20),
                         Text(car.dlnumber),
                       ],
                     ),
@@ -224,7 +232,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               );
             },
             separatorBuilder: (context, index) {
-              return Padding(
+              return const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Divider(
                   color: Colors.white,
@@ -232,15 +240,5 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               );
             },
           );
-  }
-
-  int sumLuxury() {
-    int sum = 0;
-
-    for (int i = 0; i < searchedList.length; i++) {
-      sum += searchedList as int;
-    }
-    print(sum);
-    return sum;
   }
 }

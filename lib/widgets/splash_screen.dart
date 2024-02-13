@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:used_caer/screens/widgets/register.dart';
-import 'package:used_caer/screens/widgets/sign_in.dart';
+import 'package:used_caer/widgets/register.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

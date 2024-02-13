@@ -7,13 +7,15 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Center(child: Text('About')),
+          backgroundColor: Colors.black,
+        ),
         body: ListView(
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  Text('''Vehicle Management:
+          children: const [
+            Column(
+              children: [
+                Text('''Vehicle Management:
     
     Add new vehicles to the storage database.
     View detailed information about each vehicle, including make, model, year, mileage, VIN, and more.
@@ -54,8 +56,7 @@ class AboutScreen extends StatelessWidget {
     Backup and restore functionality for data protection and peace of mind.
     Conclusion:
     Our Careg Vehicle Storage App offers a robust solution for storing and managing vehicle information using the Hive database. With features for adding, editing, deleting, and updating vehicle details, along with user authentication and backup capabilities, our app provides a comprehensive solution for individuals or businesses needing to organize and maintain vehicle records efficiently.''')
-                ],
-              ),
+              ],
             )
           ],
         ),

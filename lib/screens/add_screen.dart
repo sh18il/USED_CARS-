@@ -73,7 +73,7 @@ class _AddScreesState extends State<AddScrees> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 151, 110, 34)),
+                          backgroundColor: const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -81,7 +81,7 @@ class _AddScreesState extends State<AddScrees> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 151, 110, 34)),
+                          backgroundColor: const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -115,7 +115,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'NAME',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.blue,
                                     Colors.red,
                                     Colors.green
@@ -142,7 +142,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'MODEL',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.yellow,
                                     Colors.red,
                                     Colors.blue
@@ -175,7 +175,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'KM',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.green,
                                     Colors.red,
                                     Colors.black
@@ -202,7 +202,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'DL NUMBER',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.green,
                                     Colors.red,
                                     Colors.black
@@ -235,7 +235,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'OWNERSHIP',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.green,
                                     Colors.red,
                                     Colors.black
@@ -262,7 +262,7 @@ class _AddScreesState extends State<AddScrees> {
                             decoration: InputDecoration(
                               hintText: 'PRICE',
                               border: GradientOutlineInputBorder(
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Colors.green,
                                     Colors.red,
                                     Colors.black
@@ -314,7 +314,7 @@ class _AddScreesState extends State<AddScrees> {
                         decoration: InputDecoration(
                           hintText: 'FUETERS',
                           border: GradientOutlineInputBorder(
-                              gradient: LinearGradient(colors: [
+                              gradient: const LinearGradient(colors: [
                                 Colors.green,
                                 Colors.red,
                                 Colors.black
@@ -325,7 +325,7 @@ class _AddScreesState extends State<AddScrees> {
                     ),
                     const Gap(30),
                     ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
                                 Color.fromARGB(237, 248, 66, 5))),
                         onPressed: () {
@@ -335,7 +335,7 @@ class _AddScreesState extends State<AddScrees> {
                           }
                         },
                         child: const Text('SUBMIT')),
-                    Gap(30),
+                    const Gap(30),
                   ],
                 ),
               )

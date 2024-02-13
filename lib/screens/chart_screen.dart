@@ -1,34 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pie_chart/flutter_pie_chart.dart';
+import 'package:gap/gap.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/functions/lowcars_functions.dart';
 import 'package:used_caer/functions/medium_functions.dart';
 
-class Chart_Screen extends StatelessWidget {
-  const Chart_Screen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class Chart_Screen extends StatefulWidget {
+  const Chart_Screen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Chart_Screen> createState() => _Chart_ScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Chart_ScreenState extends State<Chart_Screen> {
   late int ttm;
   late int ttl;
   late int ttlow;
@@ -51,19 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final List<Pie> pies = [
-      Pie(color: Color.fromARGB(255, 249, 63, 63), proportion: ttm.toDouble()),
       Pie(
-          color: Color.fromARGB(255, 131, 255, 100),
+          color: const Color.fromARGB(255, 249, 63, 63),
+          proportion: ttm.toDouble()),
+      Pie(
+          color: const Color.fromARGB(255, 131, 255, 100),
           proportion: ttl.toDouble()),
       Pie(
-          color: Color.fromARGB(255, 104, 147, 255),
+          color: const Color.fromARGB(255, 104, 147, 255),
           proportion: ttlow.toDouble()),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
-        title: Center(child: const Text('Pie Chart')),
+        backgroundColor: Colors.black,
+        title: const Center(child: Text('Pie Chart')),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,9 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 30,
                     color: Colors.red,
                   ),
-                  Text('medium cars'),
+                  const Text('medium cars'),
+                  Text(ttm.toString())
                 ],
               ),
+              const Gap(10),
               Row(
                 children: [
                   Container(
@@ -104,9 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 30,
                     color: Colors.blue,
                   ),
-                  Text('Luxury cars'),
+                  const Text('Luxury cars'),
+                  Text(ttl.toString())
                 ],
               ),
+              const Gap(10),
               Row(
                 children: [
                   Container(
@@ -114,7 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 30,
                     color: Colors.green,
                   ),
-                  Text('Low cars'),
+                  const Text('Low cars '),
+                  Text(ttlow.toString())
                 ],
               ),
             ],

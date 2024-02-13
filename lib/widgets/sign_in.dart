@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'package:used_caer/screens/widgets/bottombar.dart';
+import 'package:used_caer/widgets/bottombar.dart';
 
 class Sing_in extends StatelessWidget {
   const Sing_in({super.key});

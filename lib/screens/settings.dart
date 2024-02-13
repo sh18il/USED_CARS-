@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
-import 'package:used_caer/screens/vehicles_screen.dart';
-import 'package:used_caer/screens/widgets/sign_in.dart';
+import 'package:used_caer/screens/chart_screen.dart';
+import 'package:used_caer/widgets/sign_in.dart';
 import 'package:used_caer/subscreen/about.dart';
 
 class Settings extends StatefulWidget {
@@ -18,7 +19,6 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   final List<String> itemNames = [
     'LOGOUT',
-    'EXIT',
     'RESET',
     'ABOUT',
     'POLICY',
@@ -30,21 +30,19 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black87,
-        title: Center(child: Text('SETTINGS')),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Chart_Screen()));
-              },
-              icon: Icon(Icons.bar_chart))
-        ],
+        title: const Center(child: Text('SETTINGS')),
       ),
       body: ListView.builder(
         itemCount: itemNames.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(itemNames[index]),
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Gap(40),
+                Text(itemNames[index]),
+              ],
+            ),
             onTap: () {
               _handleListItemTap(index);
             },
@@ -58,19 +56,17 @@ class _SettingsState extends State<Settings> {
     switch (index) {
       case 0:
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Sing_in()));
+            MaterialPageRoute(builder: (context) => const Sing_in()));
         break;
+
       case 1:
-        _showExitConfirmationDialog();
-        break;
-      case 2:
         _showResetConfirmationDialog();
         break;
-      case 3:
+      case 2:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => AboutScreen()));
+            .push(MaterialPageRoute(builder: (context) => const AboutScreen()));
         break;
-      case 4:
+      case 3:
         break;
     }
   }
@@ -80,17 +76,17 @@ class _SettingsState extends State<Settings> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirm Exit"),
-          content: Text("Are you sure you want to exit the application?"),
+          title: const Text("Confirm Exit"),
+          content: const Text("Are you sure you want to exit the application?"),
           actions: <Widget>[
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Exit"),
+              child: const Text("Exit"),
               onPressed: () {
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop');
               },
@@ -106,17 +102,17 @@ class _SettingsState extends State<Settings> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirm Reset"),
-          content: Text("Are you sure you want to reset all data?"),
+          title: const Text("Confirm Reset"),
+          content: const Text("Are you sure you want to reset all data?"),
           actions: <Widget>[
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Reset"),
+              child: const Text("Reset"),
               onPressed: () {
                 _resetData();
                 Navigator.of(context).pop();

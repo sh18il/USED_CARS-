@@ -57,29 +57,29 @@ class ViewLowCars extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('CarName :'),
+                                const Text('CarName :'),
                                 Text(
                                   name,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
                       ),
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('MODEL :'),
+                                const Text('MODEL :'),
                                 Text(
                                   model,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
@@ -91,29 +91,29 @@ class ViewLowCars extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('KM :'),
+                                const Text('KM :'),
                                 Text(
                                   km,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
                       ),
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('DL NUMBER :'),
+                                const Text('DL NUMBER :'),
                                 Text(
                                   dlnbr,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
@@ -125,29 +125,29 @@ class ViewLowCars extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('OWNER :'),
+                                const Text('OWNER :'),
                                 Text(
                                   owner,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
                       ),
                       Card(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 40,
                             child: Column(
                               children: [
-                                Text('PRICE :'),
+                                const Text('PRICE :'),
                                 Text(
                                   price,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ],
                             )),
@@ -156,15 +156,15 @@ class ViewLowCars extends StatelessWidget {
                   ),
                   const Gap(30),
                   Card(
-                    child: Container(
+                    child: SizedBox(
                         width: 180,
                         height: 70,
                         child: Column(
                           children: [
-                            Text('FUTURE :'),
+                            const Text('FUTURE :'),
                             Text(
                               future,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
                         )),

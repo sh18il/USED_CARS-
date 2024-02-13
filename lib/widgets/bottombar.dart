@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:used_caer/screens/add_screen.dart';
+import 'package:used_caer/screens/chart_screen.dart';
 import 'package:used_caer/screens/home_screen.dart';
 
 import 'package:used_caer/screens/settings.dart';
@@ -15,9 +16,10 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentIndex = 0;
   final screens = [
-     HomeScreen(),
-    AddScrees(),
-    Settings(),
+    const HomeScreen(),
+    const AddScrees(),
+    const Chart_Screen(),
+    const Settings(),
   ];
 
   @override
@@ -25,28 +27,29 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: Duration(milliseconds: 400),
+        animationDuration: const Duration(milliseconds: 400),
         animationCurve: Curves.linear,
         backgroundColor: Colors.transparent,
-        color: Color.fromARGB(228, 34, 5, 15),
+        color: Colors.black,
         onTap: (newIndex) {
           setState(() {
             currentIndex = newIndex;
           });
         },
         items: [
-          Icon(
+          const Icon(
             Icons.home,
             color: Colors.white,
           ),
-          Icon(
+          const Icon(
             Icons.add,
             color: Colors.white,
           ),
-          Icon(
-            Icons.settings,
+          const Icon(
+            Icons.bar_chart,
             color: Colors.white,
           ),
+          Icon(Icons.settings, color: Colors.white),
         ],
       ),
     );

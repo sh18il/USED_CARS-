@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:used_caer/screens/widgets/sign_in.dart';
+import 'package:used_caer/widgets/sign_in.dart';
 
 const SAVE_KEY = 'usrLogedin';
 
@@ -129,8 +129,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final username = usernameCntr.text;
     final passw = passwordCntr.text;
     if (username == usernameCntr && passw == passwordCntr) {
-      final _sharedPref = await SharedPreferences.getInstance();
-      await _sharedPref.setBool(SAVE_KEY, true);
+      final sharedPref = await SharedPreferences.getInstance();
+      await sharedPref.setBool(SAVE_KEY, true);
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Sing_in()));
     }
