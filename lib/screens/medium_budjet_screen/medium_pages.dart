@@ -257,11 +257,11 @@ import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:used_caer/functions/function.dart';
+import 'package:used_caer/screens/add_screen.dart';
 
 import 'package:used_caer/screens/medium_budjet_screen/medium_edit.dart';
 import 'package:used_caer/screens/medium_budjet_screen/view_medium_screen.dart';
 
-import '../../functions/medium_functions.dart';
 import '../../model/medium_cars_model.dart';
 
 class Midium_cars extends StatefulWidget {
@@ -282,7 +282,7 @@ class _Midium_carsState extends State<Midium_cars> {
   List<MediumCarsModel> searchedListm = [];
 
   void searchListUpdatem() {
-    getAllCarsm();
+    getAllCars(DataBases.MediumDb);
     searchedListm = carsMediumListNotifier.value
         .where((MediumCarsModel) =>
             MediumCarsModel.name.toLowerCase().contains(searchm.toLowerCase()))
@@ -319,7 +319,7 @@ class _Midium_carsState extends State<Midium_cars> {
                     Icons.search,
                     color: Colors.white,
                   ),
-                  hintText: 'Search Luxury cars',
+                  hintText: 'Search here Medium cars',
                   hintStyle: TextStyle(color: Colors.white),
                   border: InputBorder.none),
             ),
@@ -376,6 +376,14 @@ class _Midium_carsState extends State<Midium_cars> {
             itemCount: carsList.length,
             itemBuilder: (context, index) {
               MediumCarsModel car = carsList[index];
+              print(
+                  ('${car.price}ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'));
+              sumofMedium.add(int.tryParse(car.price)!.toInt());
+              int totalmedium =
+                  sumofMedium.reduce((value, element) => value + element);
+              print(
+                  '${totalmedium}mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
+              ChartfucntionMe.totalMedi = totalmedium;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -450,7 +458,8 @@ class _Midium_carsState extends State<Midium_cars> {
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                deletCarsL(index);
+                                                deleteCar(
+                                                    DataBases.MediumDb, index);
                                                 Navigator.of(context).pop();
                                               },
                                               child: const Text('Delete'),
@@ -508,4 +517,6 @@ class _Midium_carsState extends State<Midium_cars> {
             },
           );
   }
+
+  List<int> sumofMedium = [];
 }

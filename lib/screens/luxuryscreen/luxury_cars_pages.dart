@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/functions/medium_functions.dart';
 import 'package:used_caer/model/cars_model.dart';
+import 'package:used_caer/screens/add_screen.dart';
 
 import 'package:used_caer/screens/editscreen_luxury.dart';
 import 'package:used_caer/screens/luxuryscreen/view_luxuy_screen.dart';
@@ -22,7 +23,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
   List<CarsModel> searchedList = [];
 
   void searchListUpdate() {
-    getAllCars();
+    getAllCars(DataBases.LuxuryDb);
     searchedList = carsListNotifier.value
         .where(
           (CarsModel) =>
@@ -32,9 +33,13 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     searchListUpdate();
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(228, 34, 5, 15),
@@ -118,6 +123,12 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
             itemCount: carsList.length,
             itemBuilder: (context, index) {
               CarsModel car = carsList[index];
+              print(
+                  '${car.price}sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
+              sumof.add(int.tryParse(car.price)!.toInt());
+              int total = sumof.reduce((value, element) => value + element);
+              print('ddddddddddddddddddddddddddddddddddddddddddddddd$total');
+              Chartfucntion.totals = total;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -137,6 +148,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                   child: Card(
                     child: Column(
                       children: [
+                        // Text(total.toString()),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -192,7 +204,8 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                deletCarsL(index);
+                                                deleteCar(
+                                                    DataBases.LuxuryDb, index);
                                                 Navigator.of(context).pop();
                                               },
                                               child: const Text('Delete'),
@@ -249,6 +262,5 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
           );
   }
 
-  List<CarsModel> sumof = [];
-  var ff = carsListNotifier.value.where((car) => car.price is int);
+  List<int> sumof = [];
 }

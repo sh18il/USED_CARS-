@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/cars_model.dart';
-
+import 'package:used_caer/screens/add_screen.dart';
 
 class EditLuxury_Screen extends StatefulWidget {
   String name;
@@ -279,8 +279,7 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
           price: pricelx,
           future: futurelx,
           image: imagelx);
-      editCarsL(widget.index, update);
-     
+      editCar(DataBases.LuxuryDb, widget.index, update);
     }
   }
 
@@ -309,5 +308,3 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
     });
   }
 }
-
-

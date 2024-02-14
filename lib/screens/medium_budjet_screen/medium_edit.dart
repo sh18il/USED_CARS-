@@ -5,13 +5,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:used_caer/functions/function.dart';
 
 import 'package:used_caer/model/medium_cars_model.dart';
+import 'package:used_caer/screens/add_screen.dart';
 
 import '../../functions/medium_functions.dart';
 
 class MediumEditScreen extends StatefulWidget {
- String name;
+  String name;
   String model;
   String km;
   int index;
@@ -20,7 +22,7 @@ class MediumEditScreen extends StatefulWidget {
   String price;
   String future;
   dynamic imagepath;
-    MediumEditScreen({
+  MediumEditScreen({
     super.key,
     required this.name,
     required this.model,
@@ -33,14 +35,12 @@ class MediumEditScreen extends StatefulWidget {
     required this.imagepath,
   });
 
-
-
   @override
   State<MediumEditScreen> createState() => _MediumEditScreenState();
 }
 
 class _MediumEditScreenState extends State<MediumEditScreen> {
-   TextEditingController nameContrl = TextEditingController();
+  TextEditingController nameContrl = TextEditingController();
   TextEditingController modelContrl = TextEditingController();
   TextEditingController kmContrl = TextEditingController();
   TextEditingController dlNumberContrl = TextEditingController();
@@ -61,6 +61,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
     _selectImage = widget.imagepath != '' ? File(widget.imagepath) : null;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +99,8 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -106,7 +108,8 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -255,7 +258,8 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
       ),
     );
   }
-   Future<void> updateAll() async {
+
+  Future<void> updateAll() async {
     final namelx = nameContrl.text;
     final modellx = modelContrl.text;
     final kmlx = kmContrl.text;
@@ -284,7 +288,7 @@ class _MediumEditScreenState extends State<MediumEditScreen> {
           price: pricelx,
           future: futurelx,
           image: imagelx);
-      editCarsm(widget.index, update);
+      editCar(DataBases.MediumDb, widget.index, update);
     }
   }
 

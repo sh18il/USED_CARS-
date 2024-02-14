@@ -5,10 +5,12 @@ import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/screens/add_screen.dart';
 
 import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
 import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
+import '../../functions/function.dart';
 import '../../functions/lowcars_functions.dart';
 
 class Low_Cars extends StatefulWidget {
@@ -28,7 +30,7 @@ class _Low_CarsState extends State<Low_Cars> {
   String search = "";
   List<LowCarsModel> searchedList = [];
   void searchListUpdate() {
-    getAllCarsll();
+    getAllCars(DataBases.LowDb);
     searchedList = carsLowListNotifier.value
         .where(
           (LowCarsModel) =>
@@ -121,6 +123,10 @@ class _Low_CarsState extends State<Low_Cars> {
             itemCount: carsList.length,
             itemBuilder: (context, index) {
               LowCarsModel car = carsList[index];
+              sumOfLow.add(int.tryParse(car.price)!.toInt());
+              int totalLo =
+                  sumOfLow.reduce((value, element) => value + element);
+              ChartfucntionLow.totalLow = totalLo;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -196,7 +202,8 @@ class _Low_CarsState extends State<Low_Cars> {
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                deletCarsll(index);
+                                                deleteCar(
+                                                    DataBases.LowDb, index);
                                                 Navigator.of(context).pop();
                                               },
                                               child: const Text('Delete'),
@@ -254,4 +261,6 @@ class _Low_CarsState extends State<Low_Cars> {
             },
           );
   }
+
+  List<int> sumOfLow = [];
 }

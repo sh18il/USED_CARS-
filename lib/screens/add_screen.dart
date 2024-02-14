@@ -73,7 +73,8 @@ class _AddScreesState extends State<AddScrees> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 151, 110, 34)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -81,7 +82,8 @@ class _AddScreesState extends State<AddScrees> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 151, 110, 34)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -331,7 +333,6 @@ class _AddScreesState extends State<AddScrees> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             onAddCarsButn();
-                            
                           }
                         },
                         child: const Text('SUBMIT')),
@@ -375,7 +376,8 @@ class _AddScreesState extends State<AddScrees> {
           price: price,
           future: future,
           image: _selectImage!.path);
-      addcarsl(cars);
+
+      addCar(DataBases.LuxuryDb, cars);
     } else if (selectedDatabase == DataBases.MediumDb) {
       final name = nameContrl.text;
       final model = modelContrl.text;
@@ -404,7 +406,8 @@ class _AddScreesState extends State<AddScrees> {
           price: price,
           future: future,
           image: _selectImage!.path);
-      addcarsm(cars);
+
+      addCar(DataBases.MediumDb, cars);
     } else if (selectedDatabase == DataBases.LowDb) {
       final name = nameContrl.text;
       final model = modelContrl.text;
@@ -434,7 +437,7 @@ class _AddScreesState extends State<AddScrees> {
           future: future,
           image: _selectImage!.path);
 
-      addcarsll(cars);
+      addCar(DataBases.LowDb, cars);
     }
   }
 

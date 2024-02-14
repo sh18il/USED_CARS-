@@ -27,9 +27,10 @@ class _Chart_ScreenState extends State<Chart_Screen> {
 
   void updateValues() {
     setState(() {
-      ttm = carsMediumListNotifier.value.length;
-      ttl = carsListNotifier.value.length;
-      ttlow = carsLowListNotifier.value.length;
+      ttm = ChartfucntionMe.totalMedi;
+      ttl = Chartfucntion.totals;
+
+      ttlow = ChartfucntionLow.totalLow;
     });
   }
 
@@ -41,11 +42,9 @@ class _Chart_ScreenState extends State<Chart_Screen> {
           color: const Color.fromARGB(255, 249, 63, 63),
           proportion: ttm.toDouble()),
       Pie(
-          color: const Color.fromARGB(255, 131, 255, 100),
-          proportion: ttl.toDouble()),
-      Pie(
           color: const Color.fromARGB(255, 104, 147, 255),
-          proportion: ttlow.toDouble()),
+          proportion: ttl.toDouble()),
+      Pie(color: Colors.green, proportion: ttlow.toDouble()),
     ];
 
     return Scaffold(
@@ -116,5 +115,4 @@ class _Chart_ScreenState extends State<Chart_Screen> {
       ),
     );
   }
-  
 }

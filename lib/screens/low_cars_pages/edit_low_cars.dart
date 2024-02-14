@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:used_caer/functions/function.dart';
 
 import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/screens/add_screen.dart';
 
 import '../../functions/lowcars_functions.dart';
 
@@ -78,7 +80,6 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
             children: [
               const Gap(20),
               Center(
-              
                 child: SizedBox(
                   width: 200,
                   height: 200,
@@ -97,7 +98,8 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                 children: [
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 161, 133, 168)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 161, 133, 168)),
                       onPressed: () {
                         _pickImgGallery();
                       },
@@ -105,7 +107,8 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
                       label: const Text("GALLERY")),
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 184, 151, 192)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 184, 151, 192)),
                       onPressed: () {
                         _pickImageFromCam();
                       },
@@ -284,7 +287,8 @@ class _EditLowCarScreenState extends State<EditLowCarScreen> {
           price: pricelx,
           future: futurelx,
           image: imagelx);
-      editCarsll(widget.index, update);
+      
+      editCar(DataBases.LowDb, widget.index, update);
     }
   }
 
