@@ -8,7 +8,7 @@ import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
-import '../../functions/lowcars_functions.dart';
+
 
 // ignore: must_be_immutable
 class EditLowCarScreen extends StatefulWidget {

@@ -35,7 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  flutter_pie_chart: ^0.0.1
+  pie_chart: ^5.4.0
   gap: ^3.0.1
   gradient_borders: ^1.0.0
   hive: ^2.2.3

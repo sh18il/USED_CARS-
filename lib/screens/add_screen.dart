@@ -9,8 +9,7 @@ import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
 
-import '../functions/lowcars_functions.dart';
-import '../functions/medium_functions.dart';
+
 
 class AddScrees extends StatefulWidget {
   const AddScrees({super.key});

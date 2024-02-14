@@ -379,8 +379,8 @@ class _Midium_carsState extends State<Midium_cars> {
               print(
                   ('${car.price}ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'));
               sumofMedium.add(int.tryParse(car.price)!.toInt());
-              int totalmedium =
-                  sumofMedium.reduce((value, element) => value + element);
+              double totalmedium =
+                  sumofMedium.reduce((value, element) => value + element).toDouble();
               print(
                   '${totalmedium}mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
               ChartfucntionMe.totalMedi = totalmedium;

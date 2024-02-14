@@ -10,7 +10,7 @@ import 'package:used_caer/functions/function.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
-import '../../functions/medium_functions.dart';
+
 
 class MediumEditScreen extends StatefulWidget {
   String name;

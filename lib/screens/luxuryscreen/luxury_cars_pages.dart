@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/functions/medium_functions.dart';
+
 import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
@@ -126,7 +126,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               print(
                   '${car.price}sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
               sumof.add(int.tryParse(car.price)!.toInt());
-              int total = sumof.reduce((value, element) => value + element);
+              double total = sumof.reduce((value, element) => value + element).toDouble();
               print('ddddddddddddddddddddddddddddddddddddddddddddddd$total');
               Chartfucntion.totals = total;
               return Padding(

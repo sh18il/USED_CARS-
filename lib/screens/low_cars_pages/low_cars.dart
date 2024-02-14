@@ -11,7 +11,7 @@ import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
 import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
 import '../../functions/function.dart';
-import '../../functions/lowcars_functions.dart';
+
 
 class Low_Cars extends StatefulWidget {
   const Low_Cars({super.key});
@@ -124,8 +124,8 @@ class _Low_CarsState extends State<Low_Cars> {
             itemBuilder: (context, index) {
               LowCarsModel car = carsList[index];
               sumOfLow.add(int.tryParse(car.price)!.toInt());
-              int totalLo =
-                  sumOfLow.reduce((value, element) => value + element);
+              double totalLo =
+                  sumOfLow.reduce((value, element) => value + element).toDouble();
               ChartfucntionLow.totalLow = totalLo;
               return Padding(
                 padding: const EdgeInsets.all(8.0),

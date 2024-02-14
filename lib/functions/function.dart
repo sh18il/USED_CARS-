@@ -47,7 +47,7 @@ ValueNotifier<List<CarsModel>> carsListNotifier = ValueNotifier([]);
 ValueNotifier<List<LowCarsModel>> carsLowListNotifier = ValueNotifier([]);
 ValueNotifier<List<MediumCarsModel>> carsMediumListNotifier = ValueNotifier([]);
 
-Future<void> addCar(DataBases type, dynamic value) async {
+Future<void> addCar(DataBases type,  value) async {
   final box = await _getBoxForType(type);
   await box.add(value);
 
@@ -120,16 +120,16 @@ void _addAllToList(DataBases type, List<dynamic> values) {
 }
 
 class Chartfucntion {
-  static int totals = 0;
+  static double totals = 0;
  
 }
 class ChartfucntionMe {
  
-  static int totalMedi = 0;
+  static double totalMedi = 0;
 
 }
 class ChartfucntionLow {
  
-  static int totalLow = 0;
+  static double totalLow = 0;
 }
 

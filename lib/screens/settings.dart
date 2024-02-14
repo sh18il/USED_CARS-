@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
-import 'package:used_caer/screens/chart_screen.dart';
+
 import 'package:used_caer/widgets/sign_in.dart';
 import 'package:used_caer/subscreen/about.dart';
 
@@ -30,24 +30,38 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black87,
-        title: const Center(child: Text('SETTINGS')),
       ),
-      body: ListView.builder(
-        itemCount: itemNames.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Gap(40),
-                Text(itemNames[index]),
-              ],
+      body: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                'SETTINGS',
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Gap(50),
+          Expanded(
+            child: ListView.builder(
+              itemCount: itemNames.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Gap(40),
+                      Text(itemNames[index]),
+                    ],
+                  ),
+                  onTap: () {
+                    _handleListItemTap(index);
+                  },
+                );
+              },
             ),
-            onTap: () {
-              _handleListItemTap(index);
-            },
-          );
-        },
+          ),
+        ],
       ),
     );
   }
