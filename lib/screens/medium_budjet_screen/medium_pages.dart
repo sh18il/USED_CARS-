@@ -295,7 +295,7 @@ class _Midium_carsState extends State<Midium_cars> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
+        backgroundColor: Colors.black,
         title: SizedBox(
           width: double.infinity,
           child: Container(

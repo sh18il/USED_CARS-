@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:used_caer/screens/low_cars_pages/low_cars.dart';
 import 'package:used_caer/screens/luxuryscreen/luxury_cars_pages.dart';
 import 'package:used_caer/screens/medium_budjet_screen/medium_pages.dart';
+import 'package:used_caer/widgets/register.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -137,4 +139,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+
 }

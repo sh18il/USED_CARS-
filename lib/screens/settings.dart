@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:used_caer/model/cars_model.dart';
 import 'package:used_caer/model/low_cars_model.dart';
 import 'package:used_caer/model/medium_cars_model.dart';
+import 'package:used_caer/widgets/register.dart';
 
 import 'package:used_caer/widgets/sign_in.dart';
 import 'package:used_caer/subscreen/about.dart';
@@ -35,6 +37,7 @@ class _SettingsState extends State<Settings> {
         children: [
           Column(
             children: [
+              Gap(50),
               Text(
                 'SETTINGS',
                 style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
@@ -69,8 +72,7 @@ class _SettingsState extends State<Settings> {
   void _handleListItemTap(int index) {
     switch (index) {
       case 0:
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const Sing_in()));
+        singout(context);
         break;
 
       case 1:
@@ -83,6 +85,15 @@ class _SettingsState extends State<Settings> {
       case 3:
         break;
     }
+  }
+
+  void singout(context) async {
+    final _sharedPref = await SharedPreferences.getInstance();
+    await _sharedPref.setBool(SAVE_KEY, false);
+
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const RegisterScreen()),
+        (route) => false);
   }
 
   // void _showExitConfirmationDialog() {
@@ -139,11 +150,11 @@ class _SettingsState extends State<Settings> {
   }
 
   void _resetData() async {
-    final carslDB = await Hive.openBox<CarsModel>('carsl_db');
+    final carslDB = await Hive.openBox<CarsModel>('luxury_cars_db');
     carslDB.clear();
-    final carslDBl = await Hive.openBox<LowCarsModel>('carsll_db');
+    final carslDBl = await Hive.openBox<LowCarsModel>('low_cars_db');
     carslDBl.clear();
-    final carslDBm = await Hive.openBox<MediumCarsModel>('carsm_db');
+    final carslDBm = await Hive.openBox<MediumCarsModel>('medium_cars_db');
     carslDBm.clear();
   }
 }

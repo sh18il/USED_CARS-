@@ -12,7 +12,6 @@ import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
 import '../../functions/function.dart';
 
-
 class Low_Cars extends StatefulWidget {
   const Low_Cars({super.key});
 
@@ -44,7 +43,7 @@ class _Low_CarsState extends State<Low_Cars> {
     // searchListUpdate();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
+        backgroundColor: Colors.black,
         title: SizedBox(
           width: double.infinity,
           child: Container(
@@ -124,8 +123,9 @@ class _Low_CarsState extends State<Low_Cars> {
             itemBuilder: (context, index) {
               LowCarsModel car = carsList[index];
               sumOfLow.add(int.tryParse(car.price)!.toInt());
-              double totalLo =
-                  sumOfLow.reduce((value, element) => value + element).toDouble();
+              double totalLo = sumOfLow
+                  .reduce((value, element) => value + element)
+                  .toDouble();
               ChartfucntionLow.totalLow = totalLo;
               return Padding(
                 padding: const EdgeInsets.all(8.0),

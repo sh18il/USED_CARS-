@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:used_caer/screens/home_screen.dart';
+import 'package:used_caer/widgets/bottombar.dart';
 import 'package:used_caer/widgets/sign_in.dart';
 
 const SAVE_KEY = 'usrLogedin';
@@ -48,7 +50,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       width: 305,
-                      height: 46,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
@@ -74,11 +75,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       width: 305,
-                      height: 46,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: TextFormField(
+                        obscureText: true,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'not valid';
@@ -103,8 +104,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       onPressed: () {
                         if (_SINGUPkey.currentState!.validate()) {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (context) => Sing_in()));
+                          // Navigator.of(context).pushReplacement(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => Sing_in()));
+                          chekLogin(context);
                         } else {
                           print('data empty');
                         }
@@ -128,11 +131,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void chekLogin(context) async {
     final username = usernameCntr.text;
     final passw = passwordCntr.text;
-    if (username == usernameCntr && passw == passwordCntr) {
+    if (username == 'shibil' && passw == 'asas') {
       final sharedPref = await SharedPreferences.getInstance();
       await sharedPref.setBool(SAVE_KEY, true);
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Sing_in()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => BottomNav()));
+    } else {
+      showDialog(
+          context: context,
+          builder: (ctx1) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('User passward doesnot match'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(ctx1).pop();
+                  },
+                  child: Text('close'),
+                )
+              ],
+            );
+          });
     }
   }
 }

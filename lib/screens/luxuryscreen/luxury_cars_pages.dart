@@ -42,7 +42,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(228, 34, 5, 15),
+        backgroundColor: Colors.black,
         title: SizedBox(
           width: double.infinity,
           child: Container(
@@ -126,7 +126,8 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
               print(
                   '${car.price}sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
               sumof.add(int.tryParse(car.price)!.toInt());
-              double total = sumof.reduce((value, element) => value + element).toDouble();
+              double total =
+                  sumof.reduce((value, element) => value + element).toDouble();
               print('ddddddddddddddddddddddddddddddddddddddddddddddd$total');
               Chartfucntion.totals = total;
               return Padding(

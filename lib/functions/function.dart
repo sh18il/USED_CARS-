@@ -1,41 +1,5 @@
-// import 'package:flutter/material.dart';
-// import 'package:hive/hive.dart';
-// import 'package:used_caer/model/cars_model.dart';
 
-// ValueNotifier<List<CarsModel>> carsListNotifier = ValueNotifier([]);
 
-// Future<void> addcarsl(CarsModel value) async {
-//   final carslDB = await Hive.openBox<CarsModel>('carsl_db');
-//   await carslDB.add(value);
-//   carsListNotifier.value.add(value);
-
-//   carsListNotifier.notifyListeners();
-//   getAllCars();
-// }
-
-// Future<void> getAllCars() async {
-//   final carslDB = await Hive.openBox<CarsModel>('carsl_db');
-//   carsListNotifier.value.clear();
-//   carsListNotifier.value.addAll(carslDB.values);
-//   carsListNotifier.notifyListeners();
-// }
-
-// Future<void> deletCarsL(int index) async {
-//   final carslDB = await Hive.openBox<CarsModel>('carsl_db');
-//   await carslDB.deleteAt(index);
-//   getAllCars();
-// }
-
-// Future<void> editCarsL(index, CarsModel value) async {
-//   final carslDB = await Hive.openBox<CarsModel>('carsl_db');
-//   carsListNotifier.value.clear();
-//   carsListNotifier.value.addAll(carslDB.values);
-
-//   carsListNotifier.notifyListeners();
-//   carslDB.putAt(index, value);
-//   getAllCars();
-// }
-//.............................................................
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:used_caer/model/cars_model.dart';
@@ -48,33 +12,33 @@ ValueNotifier<List<LowCarsModel>> carsLowListNotifier = ValueNotifier([]);
 ValueNotifier<List<MediumCarsModel>> carsMediumListNotifier = ValueNotifier([]);
 
 Future<void> addCar(DataBases type,  value) async {
-  final box = await _getBoxForType(type);
+  final box = await _boxForType(type);
   await box.add(value);
 
   getAllCars(type);
 }
 
 Future<void> getAllCars(DataBases type) async {
-  final box = await _getBoxForType(type);
+  final box = await _boxForType(type);
   _clearNotifierList(type);
   _addAllToList(type, box.values.toList());
 }
 
 Future<void> deleteCar(DataBases type, int index) async {
-  final box = await _getBoxForType(type);
+  final box = await _boxForType(type);
   await box.deleteAt(index);
 
   getAllCars(type);
 }
 
 Future<void> editCar(DataBases type, int index, dynamic value) async {
-  final box = await _getBoxForType(type);
+  final box = await _boxForType(type);
   await box.putAt(index, value);
 
   getAllCars(type);
 }
 
-Future<Box<dynamic>> _getBoxForType(DataBases type) async {
+Future<Box<dynamic>> _boxForType(DataBases type) async {
   switch (type) {
     case DataBases.LowDb:
       return await Hive.openBox<LowCarsModel>('low_cars_db');
