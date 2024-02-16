@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:used_caer/model/cars_model.dart';
-import 'package:used_caer/model/low_cars_model.dart';
-import 'package:used_caer/model/medium_cars_model.dart';
+import 'package:used_caer/model/luxurycar/cars_model.dart';
+import 'package:used_caer/model/lowcar/low_cars_model.dart';
+import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
+import 'package:used_caer/screens/privacypolicy.dart';
 import 'package:used_caer/widgets/register.dart';
 
-import 'package:used_caer/widgets/sign_in.dart';
-import 'package:used_caer/subscreen/about.dart';
+import 'package:used_caer/screens/about.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _SettingsState extends State<Settings> {
     'LOGOUT',
     'RESET',
     'ABOUT',
-    'POLICY',
+    'PRIVACY & POLICY',
   ];
 
   @override
@@ -35,7 +35,7 @@ class _SettingsState extends State<Settings> {
       ),
       body: Column(
         children: [
-          Column(
+          const Column(
             children: [
               Gap(50),
               Text(
@@ -44,7 +44,7 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
-          Gap(50),
+          const Gap(50),
           Expanded(
             child: ListView.builder(
               itemCount: itemNames.length,
@@ -53,7 +53,7 @@ class _SettingsState extends State<Settings> {
                   title: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Gap(40),
+                      const Gap(40),
                       Text(itemNames[index]),
                     ],
                   ),
@@ -83,6 +83,8 @@ class _SettingsState extends State<Settings> {
             .push(MaterialPageRoute(builder: (context) => const AboutScreen()));
         break;
       case 3:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const PrivacyScreen()));
         break;
     }
   }
@@ -95,32 +97,6 @@ class _SettingsState extends State<Settings> {
         MaterialPageRoute(builder: (context) => const RegisterScreen()),
         (route) => false);
   }
-
-  // void _showExitConfirmationDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: const Text("Confirm Exit"),
-  //         content: const Text("Are you sure you want to exit the application?"),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: const Text("Cancel"),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //           ),
-  //           TextButton(
-  //             child: const Text("Exit"),
-  //             onPressed: () {
-  //               SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   void _showResetConfirmationDialog() {
     showDialog(

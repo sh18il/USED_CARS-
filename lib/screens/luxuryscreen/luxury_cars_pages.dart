@@ -5,20 +5,20 @@ import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:used_caer/functions/function.dart';
 
-import 'package:used_caer/model/cars_model.dart';
+import 'package:used_caer/model/luxurycar/cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
 import 'package:used_caer/screens/editscreen_luxury.dart';
 import 'package:used_caer/screens/luxuryscreen/view_luxuy_screen.dart';
 
-class Luxury_cars_Screen extends StatefulWidget {
-  const Luxury_cars_Screen({Key? key}) : super(key: key);
+class LuxurycarsScreen extends StatefulWidget {
+  const LuxurycarsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Luxury_cars_Screen> createState() => _Luxury_cars_ScreenState();
+  State<LuxurycarsScreen> createState() => _LuxurycarsScreenState();
 }
 
-class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
+class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
   String search = "";
   List<CarsModel> searchedList = [];
 
@@ -58,7 +58,7 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                 setState(() {
                   search = value;
                   searchListUpdate();
-                  print(value);
+                 
                 });
               },
               decoration: const InputDecoration(
@@ -123,13 +123,10 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
             itemCount: carsList.length,
             itemBuilder: (context, index) {
               CarsModel car = carsList[index];
-              print(
-                  '${car.price}sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
-              sumof.add(int.tryParse(car.price)!.toInt());
+               sumof.add(int.tryParse(car.price)!.toInt());
               double total =
                   sumof.reduce((value, element) => value + element).toDouble();
-              print('ddddddddddddddddddddddddddddddddddddddddddddddd$total');
-              Chartfucntion.totals = total;
+             Chartfucntion.totals = total;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -223,10 +220,9 @@ class _Luxury_cars_ScreenState extends State<Luxury_cars_Screen> {
                                 ),
                                 IconButton(
                                     onPressed: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EditLuxury_Screen(
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (context) => EditLuxury(
                                                     name: car.name,
                                                     model: car.model,
                                                     km: car.km,

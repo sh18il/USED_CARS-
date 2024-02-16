@@ -1,17 +1,15 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:used_caer/model/cars_model.dart';
-import 'package:used_caer/model/medium_cars_model.dart';
-import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/model/luxurycar/cars_model.dart';
+import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
+import 'package:used_caer/model/lowcar/low_cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
 ValueNotifier<List<CarsModel>> carsListNotifier = ValueNotifier([]);
 ValueNotifier<List<LowCarsModel>> carsLowListNotifier = ValueNotifier([]);
 ValueNotifier<List<MediumCarsModel>> carsMediumListNotifier = ValueNotifier([]);
 
-Future<void> addCar(DataBases type,  value) async {
+Future<void> addCar(DataBases type, value) async {
   final box = await _boxForType(type);
   await box.add(value);
 
@@ -85,15 +83,6 @@ void _addAllToList(DataBases type, List<dynamic> values) {
 
 class Chartfucntion {
   static double totals = 0;
- 
-}
-class ChartfucntionMe {
- 
   static double totalMedi = 0;
-
-}
-class ChartfucntionLow {
- 
   static double totalLow = 0;
 }
-

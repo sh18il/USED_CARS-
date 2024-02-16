@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:used_caer/model/low_cars_model.dart';
+import 'package:used_caer/model/lowcar/low_cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
 
 import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
@@ -12,14 +12,14 @@ import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
 
 import '../../functions/function.dart';
 
-class Low_Cars extends StatefulWidget {
-  const Low_Cars({super.key});
+class LowCars extends StatefulWidget {
+  const LowCars({super.key});
 
   @override
-  State<Low_Cars> createState() => _Low_CarsState();
+  State<LowCars> createState() => _LowCarsState();
 }
 
-class _Low_CarsState extends State<Low_Cars> {
+class _LowCarsState extends State<LowCars> {
   @override
   void initState() {
     super.initState();
@@ -59,7 +59,7 @@ class _Low_CarsState extends State<Low_Cars> {
                 setState(() {
                   search = value;
                   searchListUpdate();
-                  print(value);
+                 
                 });
               },
               decoration: const InputDecoration(
@@ -107,6 +107,10 @@ class _Low_CarsState extends State<Low_Cars> {
     );
   }
 
+ 
+
+
+  // ignore: non_constant_identifier_names
   Widget LowCars_Build(List<LowCarsModel> carsList) {
     return carsList.isEmpty
         ? Column(
@@ -126,7 +130,7 @@ class _Low_CarsState extends State<Low_Cars> {
               double totalLo = sumOfLow
                   .reduce((value, element) => value + element)
                   .toDouble();
-              ChartfucntionLow.totalLow = totalLo;
+              Chartfucntion.totalLow = totalLo;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(

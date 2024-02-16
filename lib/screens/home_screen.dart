@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:used_caer/screens/low_cars_pages/low_cars.dart';
 import 'package:used_caer/screens/luxuryscreen/luxury_cars_pages.dart';
 import 'package:used_caer/screens/medium_budjet_screen/medium_pages.dart';
-import 'package:used_caer/widgets/register.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,7 +27,7 @@ class HomeScreen extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Luxury_cars_Screen()));
+                      builder: (context) => const LuxurycarsScreen()));
                 },
                 child: Container(
                   height: 220,
@@ -64,7 +62,7 @@ class HomeScreen extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Midium_cars()));
+                      builder: (context) => const Midiumcars()));
                 },
                 child: Container(
                   height: 220,
@@ -100,8 +98,8 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Low_Cars()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const LowCars()));
                 },
                 child: Container(
                   height: 220,
@@ -139,6 +137,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

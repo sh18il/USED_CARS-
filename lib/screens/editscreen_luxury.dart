@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/model/cars_model.dart';
+import 'package:used_caer/model/luxurycar/cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
+import 'package:used_caer/widgets/editpage.dart';
 
-class EditLuxury_Screen extends StatefulWidget {
+// ignore: must_be_immutable
+class EditLuxury extends StatefulWidget {
   String name;
   String model;
   String km;
@@ -17,7 +19,7 @@ class EditLuxury_Screen extends StatefulWidget {
   String price;
   String future;
   dynamic imagepath;
-  EditLuxury_Screen({
+  EditLuxury({
     super.key,
     required this.name,
     required this.model,
@@ -31,10 +33,10 @@ class EditLuxury_Screen extends StatefulWidget {
   });
 
   @override
-  State<EditLuxury_Screen> createState() => _EditLuxury_ScreenState();
+  State<EditLuxury> createState() => _EditLuxuryState();
 }
 
-class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
+class _EditLuxuryState extends State<EditLuxury> {
   TextEditingController nameContrl = TextEditingController();
   TextEditingController modelContrl = TextEditingController();
   TextEditingController kmContrl = TextEditingController();
@@ -79,13 +81,10 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
               Center(
                 child: SizedBox(
                   height: 200,
-                  child: Container(
-                    child: Image(
-                      image: _selectImage != null
-                          ? FileImage(_selectImage!)
-                          : const AssetImage("image/carr1.png")
-                              as ImageProvider,
-                    ),
+                  child: Image(
+                    image: _selectImage != null
+                        ? FileImage(_selectImage!)
+                        : const AssetImage("image/carr1.png") as ImageProvider,
                   ),
                 ),
               ),
@@ -118,131 +117,43 @@ class _EditLuxury_ScreenState extends State<EditLuxury_Screen> {
               Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        width: 172,
-                        height: 41,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: nameContrl,
-                          decoration: InputDecoration(
-                            hintText: 'NAME',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 107,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: modelContrl,
-                          decoration: InputDecoration(
-                            hintText: 'MODEL',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
+                      FormFieldBuild(controller: nameContrl, hintText: 'NAME'),
+                      FormFieldBuild(
+                          controller: modelContrl, hintText: 'MODEL'),
                     ],
                   ),
-                  const Gap(30),
+                  const Gap(7),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        width: 121,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: kmContrl,
-                          decoration: InputDecoration(
-                            hintText: 'KM',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 146,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: dlNumberContrl,
-                          decoration: InputDecoration(
-                            hintText: 'DL NUMBER',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
+                      FormFieldBuild(controller: kmContrl, hintText: 'KM'),
+                      FormFieldBuild(
+                          controller: dlNumberContrl, hintText: 'DL NUMBER'),
                     ],
                   ),
-                  const Gap(30),
+                  const Gap(7),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        width: 107,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: ownerContrl,
-                          decoration: InputDecoration(
-                            hintText: 'OWNERSHIP',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 174,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: TextFormField(
-                          controller: priceContrl,
-                          decoration: InputDecoration(
-                            hintText: 'PRICE',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                      ),
+                      FormFieldBuild(
+                          controller: ownerContrl, hintText: 'OWNERSHIP'),
+                      FormFieldBuild(
+                          controller: priceContrl, hintText: 'PRICE'),
                     ],
                   ),
-                  const Gap(30),
-                  Container(
-                    width: 223,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: TextFormField(
-                      controller: futureContrl,
-                      decoration: InputDecoration(
-                        hintText: 'FUETERS',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ),
-                  ),
-                  const Gap(30),
-                  ElevatedButton(
-                      onPressed: () {
-                        updateAll();
-                        Navigator.pop(context);
-                      },
-                      child: const Text('SUBMIT'))
+                  const Gap(7),
+                  FormFieldBuild(controller: futureContrl, hintText: 'FUETERS'),
                 ],
-              )
+              ),
+              const Gap(30),
+              ElevatedButton(
+                  onPressed: () {
+                    updateAll();
+                    Navigator.pop(context);
+                  },
+                  child: const Text('SUBMIT'))
             ],
           ),
         ),

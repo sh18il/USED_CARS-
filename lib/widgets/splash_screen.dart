@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:used_caer/screens/home_screen.dart';
+
 import 'package:used_caer/widgets/bottombar.dart';
 import 'package:used_caer/widgets/register.dart';
 
@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    CheckUserlLogin();
+    checkUserlLogin();
     super.initState();
   }
 
@@ -51,14 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
         (MaterialPageRoute(builder: (ctx) => const RegisterScreen())));
   }
 
-  Future<void> CheckUserlLogin() async {
+  Future<void> checkUserlLogin() async {
     final sharedprfre = await SharedPreferences.getInstance();
     final userLoggedIn = sharedprfre.getBool(SAVE_KEY);
     if (userLoggedIn == null || userLoggedIn == false) {
       gotoLogin();
     } else {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => BottomNav()));
+          MaterialPageRoute(builder: (context) => const BottomNav()));
     }
   }
 }

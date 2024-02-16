@@ -8,7 +8,7 @@ class AboutScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('About')),
+          title: const Center(child: Text('About')),
           backgroundColor: Colors.black,
         ),
         body: ListView(

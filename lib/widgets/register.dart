@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:used_caer/screens/home_screen.dart';
+
 import 'package:used_caer/widgets/bottombar.dart';
-import 'package:used_caer/widgets/sign_in.dart';
+
 
 const SAVE_KEY = 'usrLogedin';
 
@@ -108,9 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           //     MaterialPageRoute(
                           //         builder: (context) => Sing_in()));
                           chekLogin(context);
-                        } else {
-                          print('data empty');
-                        }
+                        } 
                       },
                       child: Container(
                           width: 50,
@@ -135,20 +133,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final sharedPref = await SharedPreferences.getInstance();
       await sharedPref.setBool(SAVE_KEY, true);
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => BottomNav()));
+          MaterialPageRoute(builder: (context) => const BottomNav()));
     } else {
       showDialog(
           context: context,
           builder: (ctx1) {
             return AlertDialog(
-              title: Text('Error'),
-              content: Text('User passward doesnot match'),
+              title: const Text('Error'),
+              content: const Text('User passward doesnot match'),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(ctx1).pop();
                   },
-                  child: Text('close'),
+                  child: const Text('close'),
                 )
               ],
             );

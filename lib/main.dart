@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:used_caer/model/cars_model.dart';
-import 'package:used_caer/model/low_cars_model.dart';
-import 'package:used_caer/model/medium_cars_model.dart';
-
-import 'package:hive/hive.dart';
+import 'package:used_caer/model/luxurycar/cars_model.dart';
+import 'package:used_caer/model/lowcar/low_cars_model.dart';
+import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
 import 'package:used_caer/widgets/splash_screen.dart';
 
 void main() async {

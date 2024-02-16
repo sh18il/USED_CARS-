@@ -5,11 +5,9 @@ import 'package:gap/gap.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/model/cars_model.dart';
-import 'package:used_caer/model/low_cars_model.dart';
-import 'package:used_caer/model/medium_cars_model.dart';
-
-
+import 'package:used_caer/model/luxurycar/cars_model.dart';
+import 'package:used_caer/model/lowcar/low_cars_model.dart';
+import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
 
 class AddScrees extends StatefulWidget {
   const AddScrees({super.key});
@@ -18,6 +16,7 @@ class AddScrees extends StatefulWidget {
   State<AddScrees> createState() => _AddScreesState();
 }
 
+// ignore: constant_identifier_names
 enum DataBases { LuxuryDb, MediumDb, LowDb }
 
 class _AddScreesState extends State<AddScrees> {
@@ -75,7 +74,7 @@ class _AddScreesState extends State<AddScrees> {
                           backgroundColor:
                               const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
-                        _pickImgGallery();
+                        _pickImgGallery(ImageSource.gallery);
                       },
                       icon: const Icon(Icons.image),
                       label: const Text("GALLERY")),
@@ -84,7 +83,7 @@ class _AddScreesState extends State<AddScrees> {
                           backgroundColor:
                               const Color.fromARGB(255, 151, 110, 34)),
                       onPressed: () {
-                        _pickImageFromCam();
+                        _pickImgGallery(ImageSource.camera);
                       },
                       icon: const Icon(Icons.camera_alt),
                       label: const Text("CAMERA")),
@@ -440,28 +439,15 @@ class _AddScreesState extends State<AddScrees> {
     }
   }
 
-  Future _pickImgGallery() async {
-    final returnImg =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+  // ignore: non_constant_identifier_names
+  Future _pickImgGallery(ImageSource) async {
+    final returnImg = await ImagePicker().pickImage(source: ImageSource);
 
     if (returnImg == null) {
       return;
     }
     setState(() {
       _selectImage = File(returnImg.path);
-    });
-  }
-
-  _pickImageFromCam() async {
-    final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
-
-    if (returnImage == null) {
-      return;
-    }
-
-    setState(() {
-      _selectImage = File(returnImage.path);
     });
   }
 }

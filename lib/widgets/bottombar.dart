@@ -18,7 +18,7 @@ class _BottomNavState extends State<BottomNav> {
   final screens = [
     const HomeScreen(),
     const AddScrees(),
-    const Chart_Screen(),
+    const ChartScreen(),
     const Settings(),
   ];
 
@@ -36,6 +36,7 @@ class _BottomNavState extends State<BottomNav> {
             currentIndex = newIndex;
           });
         },
+        // ignore: prefer_const_literals_to_create_immutables
         items: [
           const Icon(
             Icons.home,
@@ -49,6 +50,7 @@ class _BottomNavState extends State<BottomNav> {
             Icons.bar_chart,
             color: Colors.white,
           ),
+          // ignore: prefer_const_constructors
           Icon(Icons.settings, color: Colors.white),
         ],
       ),
