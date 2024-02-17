@@ -1,13 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:used_caer/functions/function.dart';
-
 import 'package:used_caer/model/luxurycar/cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
-
 import 'package:used_caer/screens/editscreen_luxury.dart';
 import 'package:used_caer/screens/luxuryscreen/view_luxuy_screen.dart';
 
@@ -58,7 +55,6 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                 setState(() {
                   search = value;
                   searchListUpdate();
-                 
                 });
               },
               decoration: const InputDecoration(
@@ -123,10 +119,10 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
             itemCount: carsList.length,
             itemBuilder: (context, index) {
               CarsModel car = carsList[index];
-               sumof.add(int.tryParse(car.price)!.toInt());
+              sumof.add(int.tryParse(car.price)!.toInt());
               double total =
                   sumof.reduce((value, element) => value + element).toDouble();
-             Chartfucntion.totals = total;
+              Chartfucntion.totals = total;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(

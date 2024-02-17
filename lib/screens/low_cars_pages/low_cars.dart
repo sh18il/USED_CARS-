@@ -1,15 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-
 import 'package:used_caer/model/lowcar/low_cars_model.dart';
 import 'package:used_caer/screens/add_screen.dart';
-
 import 'package:used_caer/screens/low_cars_pages/edit_low_cars.dart';
 import 'package:used_caer/screens/low_cars_pages/view_low_cars.dart';
-
 import '../../functions/function.dart';
 
 class LowCars extends StatefulWidget {
@@ -40,7 +36,6 @@ class _LowCarsState extends State<LowCars> {
 
   @override
   Widget build(BuildContext context) {
-    // searchListUpdate();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -59,7 +54,6 @@ class _LowCarsState extends State<LowCars> {
                 setState(() {
                   search = value;
                   searchListUpdate();
-                 
                 });
               },
               decoration: const InputDecoration(
@@ -107,9 +101,6 @@ class _LowCarsState extends State<LowCars> {
     );
   }
 
- 
-
-
   // ignore: non_constant_identifier_names
   Widget LowCars_Build(List<LowCarsModel> carsList) {
     return carsList.isEmpty
@@ -119,7 +110,6 @@ class _LowCarsState extends State<LowCars> {
               Center(
                 child: Lottie.asset('assets/Animation - 1707811402766.json'),
               ),
-              // Text('No cars available'),
             ],
           )
         : ListView.separated(

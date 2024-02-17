@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:used_caer/widgets/bottombar.dart';
 
+import 'sign_in.dart';
 
 const SAVE_KEY = 'usrLogedin';
 
@@ -104,11 +105,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       onPressed: () {
                         if (_SINGUPkey.currentState!.validate()) {
-                          // Navigator.of(context).pushReplacement(
-                          //     MaterialPageRoute(
-                          //         builder: (context) => Sing_in()));
-                          chekLogin(context);
-                        } 
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => Sing_in(
+                                      username: usernameCntr.text,
+                                      passwoed: passwordCntr.text)));
+                         
+                        }
                       },
                       child: Container(
                           width: 50,
@@ -126,31 +129,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void chekLogin(context) async {
-    final username = usernameCntr.text;
-    final passw = passwordCntr.text;
-    if (username == 'shibil' && passw == 'asas') {
-      final sharedPref = await SharedPreferences.getInstance();
-      await sharedPref.setBool(SAVE_KEY, true);
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const BottomNav()));
-    } else {
-      showDialog(
-          context: context,
-          builder: (ctx1) {
-            return AlertDialog(
-              title: const Text('Error'),
-              content: const Text('User passward doesnot match'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx1).pop();
-                  },
-                  child: const Text('close'),
-                )
-              ],
-            );
-          });
-    }
-  }
+ 
 }
