@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-
 import 'sign_in.dart';
 
 const SAVE_KEY = 'usrLogedin';
@@ -105,10 +104,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (_SINGUPkey.currentState!.validate()) {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => Sing_in(
+                                  builder: (context) => Singin(
                                       username: usernameCntr.text,
                                       passwoed: passwordCntr.text)));
-                         
                         }
                       },
                       child: Container(
@@ -126,6 +124,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
-
- 
 }

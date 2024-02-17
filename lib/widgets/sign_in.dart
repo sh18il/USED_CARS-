@@ -6,10 +6,10 @@ import 'package:used_caer/widgets/bottombar.dart';
 
 import 'register.dart';
 
-class Sing_in extends StatelessWidget {
+class Singin extends StatelessWidget {
   final String username;
   final String passwoed;
-  const Sing_in({super.key, required this.username, required this.passwoed});
+  const Singin({super.key, required this.username, required this.passwoed});
 
   @override
   Widget build(BuildContext context) {
