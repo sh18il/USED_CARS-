@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/model/luxurycar/cars_model.dart';
-import 'package:used_caer/screens/add_screen.dart';
-import 'package:used_caer/screens/editscreen_luxury.dart';
-import 'package:used_caer/screens/luxuryscreen/view_luxuy_screen.dart';
+import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/model/luxurycar/cars_model.dart';
+import 'package:royalcars/screens/add_screen.dart';
+import 'package:royalcars/screens/editscreen_luxury.dart';
+import 'package:royalcars/screens/luxuryscreen/view_luxuy_screen.dart';
 
 class LuxurycarsScreen extends StatefulWidget {
   const LuxurycarsScreen({Key? key}) : super(key: key);

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/screens/add_screen.dart';
-import 'package:used_caer/screens/medium_budjet_screen/medium_edit.dart';
-import 'package:used_caer/screens/medium_budjet_screen/view_medium_screen.dart';
+import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/screens/add_screen.dart';
+import 'package:royalcars/screens/medium_budjet_screen/medium_edit.dart';
+import 'package:royalcars/screens/medium_budjet_screen/view_medium_screen.dart';
 import '../../model/mediumcar/medium_cars_model.dart';
 
 class Midiumcars extends StatefulWidget {

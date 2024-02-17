@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:used_caer/functions/function.dart';
+import 'package:royalcars/functions/function.dart';
 
 class ChartScreen extends StatefulWidget {
   const ChartScreen({

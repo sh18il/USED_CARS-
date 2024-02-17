@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:used_caer/model/luxurycar/cars_model.dart';
-import 'package:used_caer/model/lowcar/low_cars_model.dart';
-import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
-import 'package:used_caer/screens/privacypolicy.dart';
-import 'package:used_caer/widgets/register.dart';
+import 'package:royalcars/model/luxurycar/cars_model.dart';
+import 'package:royalcars/model/lowcar/low_cars_model.dart';
+import 'package:royalcars/model/mediumcar/medium_cars_model.dart';
+import 'package:royalcars/screens/privacypolicy.dart';
+import 'package:royalcars/widgets/register.dart';
 
-import 'package:used_caer/screens/about.dart';
+import 'package:royalcars/screens/about.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);

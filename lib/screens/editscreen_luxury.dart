@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/model/luxurycar/cars_model.dart';
-import 'package:used_caer/screens/add_screen.dart';
-import 'package:used_caer/widgets/editpage.dart';
+import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/model/luxurycar/cars_model.dart';
+import 'package:royalcars/screens/add_screen.dart';
+import 'package:royalcars/widgets/editpage.dart';
 
 // ignore: must_be_immutable
 class EditLuxury extends StatefulWidget {

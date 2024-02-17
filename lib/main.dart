@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:used_caer/model/luxurycar/cars_model.dart';
-import 'package:used_caer/model/lowcar/low_cars_model.dart';
-import 'package:used_caer/model/mediumcar/medium_cars_model.dart';
-import 'package:used_caer/widgets/splash_screen.dart';
+import 'package:royalcars/model/luxurycar/cars_model.dart';
+import 'package:royalcars/model/lowcar/low_cars_model.dart';
+import 'package:royalcars/model/mediumcar/medium_cars_model.dart';
+import 'package:royalcars/widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:used_caer/functions/function.dart';
-import 'package:used_caer/model/lowcar/low_cars_model.dart';
+import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/model/lowcar/low_cars_model.dart';
 
 import '../../widgets/editpage.dart';
 import '../add_screen.dart';
