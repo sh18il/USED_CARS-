@@ -2,42 +2,38 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-import 'package:royalcars/functions/function.dart';
-import 'package:royalcars/model/luxurycar/cars_model.dart';
-import 'package:royalcars/screens/add_screen.dart';
-import 'package:royalcars/screens/editscreen_luxury.dart';
-import 'package:royalcars/screens/luxuryscreen/view_luxuy_screen.dart';
+import 'package:royalcars/service/function.dart';
 
-class LuxurycarsScreen extends StatefulWidget {
-  const LuxurycarsScreen({Key? key}) : super(key: key);
+import 'package:royalcars/view/medium_budjet_screen/medium_edit.dart';
+import 'package:royalcars/view/medium_budjet_screen/view_medium_screen.dart';
+import '../../model/mediumcar/medium_cars_model.dart';
+import '../add_screen.dart';
+
+class Midiumcars extends StatefulWidget {
+  const Midiumcars({Key? key}) : super(key: key);
 
   @override
-  State<LuxurycarsScreen> createState() => _LuxurycarsScreenState();
+  State<Midiumcars> createState() => _MidiumcarsState();
 }
-
-class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
-  String search = "";
-  List<CarsModel> searchedList = [];
-
-  void searchListUpdate() {
-    getAllCars(DataBases.LuxuryDb);
-    searchedList = carsListNotifier.value
-        .where(
-          (CarsModel) =>
-              CarsModel.name.toLowerCase().contains(search.toLowerCase()),
-        )
-        .toList();
-  }
-
+class _MidiumcarsState extends State<Midiumcars> {
   @override
   void initState() {
-    searchListUpdate();
     super.initState();
+    searchListUpdatem();
   }
-
-  @override
+ String searchm = "";
+  List<MediumCarsModel> searchedListm = [];
+void searchListUpdatem() {
+    getAllCars(DataBases.MediumDb);
+    searchedListm = carsMediumListNotifier.value
+        .where((
+        MediumCarsModel) =>
+            MediumCarsModel.name.toLowerCase().contains(searchm.toLowerCase()))
+        .toList();
+  }
+ @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: SizedBox(
@@ -53,8 +49,8 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
               style: const TextStyle(color: Colors.white),
               onChanged: (value) {
                 setState(() {
-                  search = value;
-                  searchListUpdate();
+                  searchm = value;
+                  searchListUpdatem();
                 });
               },
               decoration: const InputDecoration(
@@ -62,7 +58,7 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                     Icons.search,
                     color: Colors.white,
                   ),
-                  hintText: 'Search Luxury cars',
+                  hintText: 'Search here Medium cars',
                   hintStyle: TextStyle(color: Colors.white),
                   border: InputBorder.none),
             ),
@@ -71,7 +67,7 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                searchListUpdate();
+                searchListUpdatem();
               },
               icon: const Icon(Icons.refresh)),
         ],
@@ -80,55 +76,54 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
         children: [
           Expanded(
             child: ValueListenableBuilder(
-              valueListenable: carsListNotifier,
-              builder:
-                  (BuildContext ctx, List<CarsModel> carLList, Widget? child) {
-                return search.isNotEmpty
-                    ? searchedList.isEmpty
+              valueListenable: carsMediumListNotifier,
+              builder: (BuildContext ctx, List<MediumCarsModel> carLLIst,
+                  Widget? child) {
+                return searchm.isNotEmpty
+                    ? searchedListm.isEmpty
                         ? ListView(
                             children: [
                               Lottie.asset(
                                   'assets/Animation - 1707811402766.json'),
                             ],
                           )
-                        : buildCArList(searchedList)
-                    : buildCArList(carLList);
+                        : buildCArList(searchedListm)
+                    : buildCArList(carLLIst);
               },
             ),
           ),
           Text(
-            'Total Luxury Cars Found: ${searchedList.length}',
+            'Total Medium Cars Found: ${searchedListm.length}',
           ),
         ],
       ),
     );
   }
-
-  Widget buildCArList(List<CarsModel> carsList) {
+ Widget buildCArList(List<MediumCarsModel> carsList) {
     return carsList.isEmpty
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: Lottie.asset('assets/Animation - 1707811402766.json'),
-              ),
-              // Text('No cars available'),
+              )
             ],
           )
         : ListView.separated(
             itemCount: carsList.length,
             itemBuilder: (context, index) {
-              CarsModel car = carsList[index];
-              sumof.add(int.tryParse(car.price)!.toInt());
-              double total =
-                  sumof.reduce((value, element) => value + element).toDouble();
-              Chartfucntion.totals = total;
+              MediumCarsModel car = carsList[index];
+              sumofMedium.add(int.tryParse(car.price)!.toInt());
+              double totalmedium = sumofMedium
+                  .reduce((value, element) => value + element)
+                  .toDouble();
+              Chartfucntion.totalMedi = totalmedium;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ViewLuxuryScreen(
+                        builder: (context) => MediumViewScreen(
                             name: car.name,
                             model: car.model,
                             km: car.km,
@@ -142,7 +137,6 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                   child: Card(
                     child: Column(
                       children: [
-                        // Text(total.toString()),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -199,7 +193,7 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                                             TextButton(
                                               onPressed: () {
                                                 deleteCar(
-                                                    DataBases.LuxuryDb, index);
+                                                    DataBases.MediumDb, index);
                                                 Navigator.of(context).pop();
                                               },
                                               child: const Text('Delete'),
@@ -216,9 +210,10 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                                 ),
                                 IconButton(
                                     onPressed: () {
-                                      Navigator.of(context)
-                                          .push(MaterialPageRoute(
-                                              builder: (context) => EditLuxury(
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MediumEditScreen(
                                                     name: car.name,
                                                     model: car.model,
                                                     km: car.km,
@@ -231,13 +226,15 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
                                                   )));
                                     },
                                     icon: const Icon(Icons.edit_document)),
-                              ],
+                          ],
                             )
                           ],
                         ),
+                        const Gap(20),
                         Text(car.name),
                         const Gap(20),
                         Text(car.dlnumber),
+                        const Gap(20),
                       ],
                     ),
                   ),
@@ -254,6 +251,5 @@ class _LuxurycarsScreenState extends State<LuxurycarsScreen> {
             },
           );
   }
-
-  List<int> sumof = [];
+ List<int> sumofMedium = [];
 }

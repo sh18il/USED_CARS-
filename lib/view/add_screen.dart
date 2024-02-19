@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/service/function.dart';
 import 'package:royalcars/model/luxurycar/cars_model.dart';
 import 'package:royalcars/model/lowcar/low_cars_model.dart';
 import 'package:royalcars/model/mediumcar/medium_cars_model.dart';
-import '../widgets/editpage.dart';
+import 'widgets/editpage.dart';
 
 class AddScrees extends StatefulWidget {
   const AddScrees({super.key});
@@ -21,6 +21,7 @@ class _AddScreesState extends State<AddScrees> {
   final modelContrl = TextEditingController();
   final kmContrl = TextEditingController();
   final dlNumberContrl = TextEditingController();
+  
   final ownerContrl = TextEditingController();
   final priceContrl = TextEditingController();
   final futureContrl = TextEditingController();

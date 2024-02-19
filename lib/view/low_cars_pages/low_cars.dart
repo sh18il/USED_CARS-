@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:royalcars/model/lowcar/low_cars_model.dart';
-import 'package:royalcars/screens/add_screen.dart';
-import 'package:royalcars/screens/low_cars_pages/edit_low_cars.dart';
-import 'package:royalcars/screens/low_cars_pages/view_low_cars.dart';
-import '../../functions/function.dart';
+
+import 'package:royalcars/view/low_cars_pages/edit_low_cars.dart';
+import 'package:royalcars/view/low_cars_pages/view_low_cars.dart';
+import '../../service/function.dart';
+import '../add_screen.dart';
 
 class LowCars extends StatefulWidget {
   const LowCars({super.key});

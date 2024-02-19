@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:royalcars/model/luxurycar/cars_model.dart';
 import 'package:royalcars/model/mediumcar/medium_cars_model.dart';
 import 'package:royalcars/model/lowcar/low_cars_model.dart';
-import 'package:royalcars/screens/add_screen.dart';
+import 'package:royalcars/view/add_screen.dart';
 
 ValueNotifier<List<CarsModel>> carsListNotifier = ValueNotifier([]);
 ValueNotifier<List<LowCarsModel>> carsLowListNotifier = ValueNotifier([]);

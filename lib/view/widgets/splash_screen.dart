@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:royalcars/widgets/bottombar.dart';
-import 'package:royalcars/widgets/register.dart';
+import 'package:royalcars/view/widgets/bottombar.dart';
+import 'package:royalcars/view/widgets/register.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

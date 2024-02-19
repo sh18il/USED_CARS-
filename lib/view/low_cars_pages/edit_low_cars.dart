@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:royalcars/functions/function.dart';
+import 'package:royalcars/service/function.dart';
 import 'package:royalcars/model/lowcar/low_cars_model.dart';
 
-import '../../widgets/editpage.dart';
+import '../widgets/editpage.dart';
 import '../add_screen.dart';
 
 class EditLowCarScreen extends StatefulWidget {

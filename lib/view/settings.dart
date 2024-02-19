@@ -6,10 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:royalcars/model/luxurycar/cars_model.dart';
 import 'package:royalcars/model/lowcar/low_cars_model.dart';
 import 'package:royalcars/model/mediumcar/medium_cars_model.dart';
-import 'package:royalcars/screens/privacypolicy.dart';
-import 'package:royalcars/widgets/register.dart';
 
-import 'package:royalcars/screens/about.dart';
+import 'package:royalcars/view/widgets/register.dart';
+
+import 'about.dart';
+import 'privacypolicy.dart';
+
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);

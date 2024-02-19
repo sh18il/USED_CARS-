@@ -1,10 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:royalcars/screens/add_screen.dart';
-import 'package:royalcars/screens/chart_screen.dart';
-import 'package:royalcars/screens/home_screen.dart';
 
-import 'package:royalcars/screens/settings.dart';
+
+import 'package:royalcars/view/settings.dart';
+
+import '../add_screen.dart';
+import '../chart_screen.dart';
+import '../home_screen.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);

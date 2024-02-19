@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-import 'package:royalcars/screens/low_cars_pages/low_cars.dart';
-import 'package:royalcars/screens/luxuryscreen/luxury_cars_pages.dart';
-import 'package:royalcars/screens/medium_budjet_screen/medium_pages.dart';
+import 'package:royalcars/view/low_cars_pages/low_cars.dart';
+import 'package:royalcars/view/luxuryscreen/luxury_cars_pages.dart';
+import 'package:royalcars/view/medium_budjet_screen/medium_pages.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
